@@ -15,6 +15,7 @@
             <File name="payload\documentChange.js" />
             <File name="payload\help-en.html" />
             <File name="payload\help-ru.html" />
+            <File name="payload\glitchLogo.css" />
         </Folder>
         <File name="background.js" />
         <File name="manifest.json" />

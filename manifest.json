@@ -1,6 +1,6 @@
 {
 	"name": "SURVIV.IO Cheat",
-	"version": "0.6",
+	"version": "0.7",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
 		"background",
@@ -38,13 +38,14 @@
 		"payload/help-ru.html",
 		"payload/menu.html",
 		"payload/menu.css",
+		"payload/glitchLogo.css",
 		"third_party/jquery-3.3.1.min.js",
 		"webpack_override.js"
 	],
 	"content_scripts": [{
 		"matches": ["*://surviv.io/*"],
 		"js": ["start.js"],
-		"css": ["payload/menu.css"],
+		"css": ["payload/glitchLogo.css", "payload/menu.css"],
 		"run_at": "document_start"
 	}],
 	"manifest_version": 2,

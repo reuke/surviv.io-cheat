@@ -1,0 +1,89 @@
+
+#start-row-header::before {
+      content: """";
+      background-image: url(http://surviv.io/img/surviv_logo_full.png);
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+	  background-size: inherit;
+	  top: 0px;
+	  filter: drop-shadow(4px 4px 0px #f00);
+	  animation: glitch-loop-1 0.7s infinite ease-in-out;
+}
+		
+#start-row-header::after {
+      content: """";
+      background-image: url(http://surviv.io/img/surviv_logo_full.png);
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+	  background-size: inherit;
+	  top: 0px;
+	  filter: drop-shadow(5px -5px 0px #00f);
+	  animation: glitch-loop-2 0.3s infinite ease-in-out alternate-reverse;
+}
+
+
+@keyframes glitch-loop-1 {
+  0% { clip-path: inset(100% 100%) }
+  
+  1% { left: -1.0%; clip-path: inset(15% 0% 80% 0%) }
+  5% { left: 0.0%; clip-path: inset(25% 0% 70% 0%) }
+  5.1% { clip-path: inset(100% 100%) }
+  
+  11% { left: 1.0%; clip-path: inset(90% 0% 10% 0%) }
+  15% { left: 0.5%; clip-path: inset(85% 0% -20% 0%) }
+  15.1% { clip-path: inset(100% 100%) }
+  
+  31% { left: -1.0%; clip-path: inset(40% 0% 50% 0%) }
+  35% { left: -0.5%; clip-path: inset(50% 0% 40% 0%) }
+  35.1% { clip-path: inset(100% 100%) }
+    
+  41% { left: -0.5%; clip-path: inset(-500% 0% 95% 0%) }
+  45% { left: 1.5%; clip-path: inset(500% 0% 85% 0%) }
+  45.1% { clip-path: inset(100% 100%) }
+    
+  61% { left: -1.5%; clip-path: inset(40% 0% 50% 0%) }
+  65% { left: 0.5%; clip-path: inset(30% 0% 45% 0%) }
+  65.1% { clip-path: inset(100% 100%) }
+    
+  81% { left: 0.5%; clip-path: inset(66% 0% 11% 0%) }
+  85% { left: 1.0%; clip-path: inset(77% 0% 77% 0%) }
+  85.1% { clip-path: inset(100% 100%) }
+  
+  100% { clip-path: inset(100% 100%) }
+}
+
+@keyframes glitch-loop-2 {
+  0% { clip-path: inset(100% 100%) }
+  
+  1% { left: 1.0%; clip-path: inset(55% 0% 33% 0%) }
+  5% { left: 0.5%; clip-path: inset(66% 0% 33% 0%) }
+  5.1% { clip-path: inset(100% 100%) }
+  
+  11% { left: -1.0%; clip-path: inset(-200% 0% 300% 0%) }
+  15% { left: 0.5%; clip-path: inset(70% 0% 23% 0%) }
+  15.1% { clip-path: inset(100% 100%) }
+  
+  31% { left: 1.0%; clip-path: inset(10% 0% 74% 0%) }
+  35% { left: 0.5%; clip-path: inset(30% 0% 70% 0%) }
+  35.1% { clip-path: inset(100% 100%) }
+    
+  41% { left: 1.0%; clip-path: inset(200% 0% -100% 0%) }
+  45% { left: -1.5%; clip-path: inset(30% 0% 500% 0%) }
+  45.1% { clip-path: inset(100% 100%) }
+    
+  61% { left: 1.5%; clip-path: inset(56% 0% 36% 0%) }
+  65% { left: -0.5%; clip-path: inset(60% 0% 31% 0%) }
+  65.1% { clip-path: inset(100% 100%) }
+    
+  81% { left: -0.5%; clip-path: inset(90% 0% 0% 0%) }
+  85% { left: -1.0%; clip-path: inset(200% 0% 0% 0%) }
+  85.1% { clip-path: inset(100% 100%) }
+  
+  100% { clip-path: inset(100% 100%) }
+}
