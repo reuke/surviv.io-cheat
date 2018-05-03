@@ -1,0 +1,24 @@
+<NotepadPlus>
+    <Project name="surviv">
+        <Folder name="payload">
+            <File name="payload\gameInit.js" />
+            <File name="payload\gameOverride.js" />
+            <File name="payload\gameRender.js" />
+            <File name="payload\gameUpdate.js" />
+            <File name="payload\gameVars.js" />
+            <File name="payload\gameFree.js" />
+            <File name="payload\gameSetting.js" />
+            <File name="payload\pingOverride.js" />
+            <File name="payload\menuAppearance.js" />
+            <File name="payload\menu.html" />
+            <File name="payload\menu.css" />
+            <File name="payload\documentChange.js" />
+            <File name="payload\help-en.html" />
+            <File name="payload\help-ru.html" />
+        </Folder>
+        <File name="background.js" />
+        <File name="manifest.json" />
+        <File name="start.js" />
+        <File name="webpack_override.js" />
+    </Project>
+</NotepadPlus>

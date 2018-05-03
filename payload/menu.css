@@ -1,0 +1,47 @@
+.btn-cheat-menu-selector {
+    margin: 1px 1px !important;
+	background-position: center;
+    background-size: contain;
+}
+
+.btn-game-menu.disabled {
+    filter: grayscale(0.9);
+}
+
+#menu-tabs {
+	overflow-y: scroll;
+    overflow-x: hidden;
+    height: 376px;
+}
+
+#tabs-selectors {
+	display: flex;
+	position: relative;
+	margin: 2px;
+}
+
+#cheat-menu {
+	margin: 10px auto;
+    padding: 10px 15px;
+    width: 250px;
+	height, 450px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#btn-tab-selector-shoot {
+    background-image: url(../img/loot/loot-weapon-glock.svg);
+}
+
+#btn-tab-selector-loot {
+    background-image: url(../img/gui/mag-glass.svg);
+}
+
+#btn-tab-selector-look {
+    background-image: url(../img/gui/eye.svg);
+}
+
+#btn-tab-selector-bind {
+    background-image: url(../img/particles/part-spark-02.svg);
+}

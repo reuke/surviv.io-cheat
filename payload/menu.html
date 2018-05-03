@@ -1,0 +1,111 @@
+<!-- <div id="cheat-menu" style=" -->
+<div id="cheat-menu">
+	<div id="tabs-selectors">
+	  <a id="btn-tab-selector-shoot" class="btn-game-menu btn-cheat-menu-selector" ></a>
+	  <a id="btn-tab-selector-loot" class="btn-game-menu btn-cheat-menu-selector" ></a>
+	  <a id="btn-tab-selector-look" class="btn-game-menu btn-cheat-menu-selector" ></a>
+	  <!-- <a id="btn-tab-selector-bind" class="btn-game-menu btn-cheat-menu-selector" ></a> -->
+	</div>
+	<div id="menu-tabs">
+		<div id="tab-shoot" class="cheat-menu-tab">
+			<a id="btn-cheat-lasersightEnabled" class="btn-game-menu" >Lasersight</a>
+			<a id="btn-cheat-fragGrenadeTimerEnabled" class="btn-game-menu" >Frag grenade timer</a>
+			<a id="btn-cheat-bumpFireEnabled" class="btn-game-menu" >Bump fire</a>
+			<a id="btn-cheat-autoAimEnabled" class="btn-game-menu" >Auto aim</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autoAimSpeedInertia" class="slider-text" >Speed inertia: </p>
+				<input id="slider-autoAimSpeedInertia" type="range" min="0.1" max="0.9" step="0.1" value="0.1" class="slider">
+			</div>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autoAimPredictionInertia" class="slider-text" >Preditction inertia: </p>
+				<input id="slider-autoAimPredictionInertia" type="range" min="0.1" max="0.9" step="0.1" value="0.1" class="slider">
+			</div>
+			<a id="btn-cheat-autoAimRestirctionEnabled" class="btn-game-menu" >Auto aim restirction</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autoAimRestirctionAngle" class="slider-text" >Restriction ± angle, °: </p>
+				<input id="slider-autoAimRestirctionAngle" type="range" min="3" max="40" step="1" value="3" class="slider">
+			</div>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autoAimRestrictionCloseRange" class="slider-text" >Minimum close range: </p>
+				<input id="slider-autoAimRestrictionCloseRange" type="range" min="0" max="30" step="1" value="2" class="slider">
+			</div>
+			<!-- <a id="btn-cheat-autoAimAntiAntiCheatEnabled" class="btn-game-menu" >Aim smooth</a> -->
+			<!-- <div class="slider-container ui-slider-container"> -->
+				<!-- <p id="menu-text-autoAimAntiAntiCheatInertia" class="slider-text" >Aim smooth inertia: </p> -->
+				<!-- <input id="slider-autoAimAntiAntiCheatInertia" type="range" min="0.1" max="0.9" step="0.1" value="0.1" class="slider"> -->
+			<!-- </div> -->
+		</div>
+		<div id="tab-loot" class="cheat-menu-tab">
+			<!-- <a id="btn-cheat-lootHighlightEnabled" class="btn-game-menu" >Highlight loot</a> -->
+			<a id="btn-cheat-autolootEnabled" class="btn-game-menu" >Autoloot</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autolootSafeDistance" class="slider-text" >Autoloot safe dstance: </p>
+				<input id="slider-autolootSafeDistance" type="range" min="0.2" max="2.0" step="0.1" value="0.1" class="slider">
+			</div>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-autolootDropDelay" class="slider-text" >Autoloot drop delay: </p>
+				<input id="slider-autolootDropDelay" type="range" min="0.5" max="2.0" step="0.1" value="0.1" class="slider">
+			</div>
+		</div>
+		<div id="tab-look" class="cheat-menu-tab">
+			<a id="btn-cheat-zoomEnabled" class="btn-game-menu" >Zoom</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-zoomSpeed" class="slider-text" >Zoom speed: </p>
+				<input id="slider-zoomSpeed" type="range" min="1" max="10" step="1" value="1" class="slider">
+			</div>
+			<a id="btn-cheat-obstaclesAlphaEnabled" class="btn-game-menu" >Obstacles alpha</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-obstaclesAlphaTreeLevel" class="slider-text" >Trees alpha: </p>
+				<input id="slider-obstaclesAlphaTreeLevel" type="range" min="0.05" max="1.0" step="0.05" value="0.05" class="slider">
+			</div>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-obstaclesAlphaBushLevel" class="slider-text" >Bushes alpha: </p>
+				<input id="slider-obstaclesAlphaBushLevel" type="range"  min="0.05" max="1.0" step="0.05" value="0.05" class="slider">
+			</div>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-obstaclesAlphaTableLevel" class="slider-text" >Tables alpha: </p>
+				<input id="slider-obstaclesAlphaTableLevel" type="range"  min="0.05" max="1.0" step="0.05" value="0.05" class="slider">
+			</div>
+			<a id="btn-cheat-ceilingAlphaEnabled" class="btn-game-menu" >Ceiling alpha</a>
+			<div class="slider-container ui-slider-container">
+				<p id="menu-text-ceilingAlphaLevel" class="slider-text" >Ceiling alpha: </p>
+				<input id="slider-ceilingAlphaLevel" type="range"  min="0.05" max="1.0" step="0.05" value="0.05" class="slider">
+			</div>
+			<a id="btn-cheat-outrunRangeEnabled" class="btn-game-menu" >Display outrun range</a>
+			<a id="btn-cheat-predictionsEnabled" class="btn-game-menu" >Display movement predictions</a>
+		</div>
+		<!-- <div id="tab-bind" class="cheat-menu-tab"> -->
+			<!-- <p class="menu-text">Cheat binds</p> -->
+			<!-- <a id="btn-bind-autoAim" class="btn-game-menu" >Auto aim: </a> -->
+			<!-- <a id="btn-bind-switchMainWeapon" class="btn-game-menu" >Switch weapon: </a> -->
+			<!-- <a id="btn-bind-zoomIn" class="btn-game-menu" >Zoom in: </a> -->
+			<!-- <a id="btn-bind-szoomOut" class="btn-game-menu" >Zoom out: </a> -->
+			<!-- <p class="menu-text">Game binds</p> -->
+			<!-- <a id="btn-bind-goUp" class="btn-game-menu" >Move up: </a> -->
+			<!-- <a id="btn-bind-goLeft" class="btn-game-menu" >Move left: </a> -->
+			<!-- <a id="btn-bind-goDown" class="btn-game-menu" >Move down: </a> -->
+			<!-- <a id="btn-bind-goRight" class="btn-game-menu" >Move right: </a> -->
+			<!-- <a id="btn-bind-shoot" class="btn-game-menu" >Shoot: </a> -->
+			<!-- <a id="btn-bind-reload" class="btn-game-menu" >Reload: </a> -->
+			<!-- <a id="btn-bind-interact" class="btn-game-menu" >Interact: </a> -->
+			<!-- <a id="btn-bind-cancelAction" class="btn-game-menu" >Cancel action: </a> -->
+			<!-- <a id="btn-bind-teamPing" class="btn-game-menu" >Use team ping: </a> -->
+			<!-- <a id="btn-bind-emotes" class="btn-game-menu" >Use emotes: </a> -->
+			<!-- <a id="btn-bind-toggleMap" class="btn-game-menu" >Toggle map: </a> -->
+			<!-- <a id="btn-bind-toggleMiniMap" class="btn-game-menu" >Toggle minimap: </a> -->
+			<!-- <a id="btn-bind-equipLast" class="btn-game-menu" >Equip last: </a> -->
+			<!-- <a id="btn-bind-equipNext" class="btn-game-menu" >Equip next: </a> -->
+			<!-- <a id="btn-bind-equipPrev" class="btn-game-menu" >Equip prev: </a> -->
+			<!-- <a id="btn-bind-equipWeapon1" class="btn-game-menu" >Equip weapon 1: </a> -->
+			<!-- <a id="btn-bind-equipWeapon2" class="btn-game-menu" >Equip weapon 2: </a> -->
+			<!-- <a id="btn-bind-equipWeapon3" class="btn-game-menu" >Equip fists: </a> -->
+			<!-- <a id="btn-bind-equipWeapon4" class="btn-game-menu" >Equip grenade: </a> -->
+			<!-- <a id="btn-bind-useMedical7" class="btn-game-menu" >Use bandage: </a> -->
+			<!-- <a id="btn-bind-useMedical8" class="btn-game-menu" >Use stimulator: </a> -->
+			<!-- <a id="btn-bind-useMedical9" class="btn-game-menu" >Use medkit: </a> -->
+			<!-- <a id="btn-bind-useMedical0" class="btn-game-menu" >Use first aid kit: </a> -->
+		<!-- </div> -->
+	</div>
+	
+	
+</div>
