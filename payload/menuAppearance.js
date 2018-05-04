@@ -147,6 +147,8 @@
 			}
 			
 			var sliderSetValue = function(slider, value){
+				var cap = $("#menu-text-" + slider).text();
+				$("#menu-text-" + slider).text(cap.substr(0, cap.indexOf(': ') + 2) +  value.toString())
 				$("#slider-" + slider).val(value);
 			}
 			
