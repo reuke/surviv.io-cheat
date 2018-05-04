@@ -48,6 +48,8 @@
 					obstaclesAlphaTableLevel:		0.15,
 					ceilingAlphaEnabled: 			true,
 					ceilingAlphaLevel:				0.15,
+					smokeAlphaEnabled: 				true,
+					smokeAlphaLevel:				0.15,
 					outrunRangeEnabled: 			true,
 					predictionsEnabled: 			true,
 				},
@@ -126,6 +128,8 @@
 					obstaclesAlphaTableLevel:		sliderGetValue("obstaclesAlphaTableLevel"),
 					ceilingAlphaEnabled: 			btnGetState("ceilingAlphaEnabled"),
 					ceilingAlphaLevel:				sliderGetValue("ceilingAlphaLevel"),
+					smokeAlphaEnabled: 				btnGetState("smokeAlphaEnabled"),
+					smokeAlphaLevel:				sliderGetValue("smokeAlphaLevel"),
 					outrunRangeEnabled: 			btnGetState("outrunRangeEnabled"),
 					predictionsEnabled: 			btnGetState("predictionsEnabled"),
 				},
@@ -180,6 +184,8 @@
 			sliderSetValue("obstaclesAlphaTableLevel",		state.obstaclesAlphaTableLevel);
 			btnSetState("ceilingAlphaEnabled",				state.ceilingAlphaEnabled);
 			sliderSetValue("ceilingAlphaLevel",				state.ceilingAlphaLevel);
+			btnSetState("smokeAlphaEnabled",				state.smokeAlphaEnabled);
+			sliderSetValue("smokeAlphaLevel",				state.smokeAlphaLevel);
 			btnSetState("outrunRangeEnabled",				state.outrunRangeEnabled);
 			btnSetState("predictionsEnabled",				state.predictionsEnabled);
 		}

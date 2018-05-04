@@ -42,7 +42,20 @@ window.gameFunctions.gameRender = function(){
 		
 		building.ceiling.sprite.alpha = setting.ceilingAlphaLevel;
 	}
+	
+	var updateSmokeAplha = function(smoke) {
+		if(!smoke || !smoke.particle || !smoke.particle.sprite)
+			return;
+		
+		var setting = window.menu.UserSetting.look;
 
+		if(!setting.smokeAlphaEnabled)
+			return;
+		
+		smoke.particle.sprite.alpha *= setting.smokeAlphaLevel;
+	}
+
+	game.smokeBarn.smokePool.pool.forEach(updateSmokeAplha);
 	game.map.obstaclePool.pool.forEach(updateObstacleAlpha);
 	game.map.buildingPool.pool.forEach(updateBuildingCeilingAplha);
 
