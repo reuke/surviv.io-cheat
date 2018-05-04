@@ -52,6 +52,7 @@
 					smokeAlphaLevel:				0.15,
 					outrunRangeEnabled: 			true,
 					predictionsEnabled: 			true,
+					enemyLinesEnabled: 				true,
 				},
 			}
 		}
@@ -132,6 +133,7 @@
 					smokeAlphaLevel:				sliderGetValue("smokeAlphaLevel"),
 					outrunRangeEnabled: 			btnGetState("outrunRangeEnabled"),
 					predictionsEnabled: 			btnGetState("predictionsEnabled"),
+					enemyLinesEnabled: 				btnGetState("enemyLinesEnabled"),
 				},
 			}
 		}
@@ -188,6 +190,7 @@
 			sliderSetValue("smokeAlphaLevel",				state.smokeAlphaLevel);
 			btnSetState("outrunRangeEnabled",				state.outrunRangeEnabled);
 			btnSetState("predictionsEnabled",				state.predictionsEnabled);
+			btnSetState("enemyLinesEnabled",				state.enemyLinesEnabled);
 		}
 		
 		var changeTab = function(tabName){

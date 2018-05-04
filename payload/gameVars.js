@@ -14,6 +14,10 @@ window.gameVars.Game = {
 		direction: 0.0,
 		angle: 0.0,
 	},
+	EnemyLines: {
+		draw: null,
+		points: null,
+	},
 };
 
 window.gameVars.ZoomLevel = 0.5;

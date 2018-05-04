@@ -74,6 +74,9 @@ window.gameFunctions.gameRender = function(){
 			player.targetIndicator = targetIndicator;
 		}
 		
+		if(!targetIndicator)
+			return;
+		
 		targetIndicator.position.x = targetIndicator.width * -0.5 + player.prediction.x;
 		targetIndicator.position.y = targetIndicator.height * -0.5 + player.prediction.y;
 		
@@ -172,10 +175,91 @@ window.gameFunctions.gameRender = function(){
 		draw.endFill();
 	}
 	
+	var updateLaser = function() {
+		if(!game.activePlayer || !game.activePlayer.container)
+			return;
+		
+		var laser = window.gameVars.Game.Laser;
+		
+		var draw = laser.draw;
+		
+		if(!draw)
+		{
+			draw = new window.PIXI.Graphics();
+			
+			laser.draw = draw;
+			game.activePlayer.container.addChild(draw);
+			game.activePlayer.container.setChildIndex(draw, 0);
+		}
+		
+		if(!draw.graphicsData)
+			return;
+		
+		draw.clear();
+		
+		if(!laser.active || !window.menu.UserSetting.shoot.lasersightEnabled)
+			return;
+		
+		var center = {x: 0, y: 0}
+		var radius = laser.range;
+		var angleFrom = laser.direction - laser.angle;
+		var angleTo = laser.direction + laser.angle;
+		
+		angleFrom = angleFrom > Math.PI * 2 ? angleFrom - Math.PI * 2 : angleFrom < 0 ? angleFrom + Math.PI * 2 : angleFrom;
+		angleTo = angleTo > Math.PI * 2 ? angleTo - Math.PI * 2 : angleTo < 0 ? angleTo + Math.PI * 2 : angleTo;
+		
+		draw.beginFill( 0xff0000, 0.1 );
+		draw.moveTo(center.x,center.y);
+		draw.arc(center.x, center.y, radius, angleFrom, angleTo);
+		draw.lineTo(center.x, center.y);
+		draw.endFill();
+	}
+	
+	var updateEnemyLines = function() {
+		if(!game.activePlayer || !game.activePlayer.container)
+			return;
+		
+		var enemyLines = window.gameVars.Game.EnemyLines;
+		
+		var points = enemyLines.points
+		var draw = enemyLines.draw;
+		
+		if(!points)
+			return;
+	
+		if(!draw)
+		{
+			draw = new window.PIXI.Graphics();
+			
+			enemyLines.draw = draw;
+			game.activePlayer.container.addChild(draw);
+			game.activePlayer.container.setChildIndex(draw, 0);
+		}
+		
+		if(!draw.graphicsData)
+			return;
+		
+		draw.clear();
+		
+		if(!window.menu.UserSetting.look.enemyLinesEnabled)
+			return;
+		
+		draw.beginFill();
+		draw.lineStyle(2, 0x68B0E8);
+		
+		points.forEach(function(pnt) {
+			draw.moveTo(0, 0);
+			draw.lineTo(pnt.x, pnt.y);
+		});
+		
+		draw.endFill();
+	}
+	
 	try {
 		window.gameVars.Game.Enimies.forEach(updateTargetIndicator);
 		window.gameVars.Game.Enimies.forEach(updateRangeIndicator);
 		updateLaser();
+		updateEnemyLines();
 	}
 	catch(error)
 	{

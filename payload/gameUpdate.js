@@ -221,17 +221,6 @@ window.gameFunctions.gameUpdate = function(){
 	var autoFireGuns =  ["fists", "mk12", "m39", "saiga", "m9", "m9_dual", "ot38", "ot38_dual"];
 	var grenadeTimerWarning = 1.05;
 	
-	// var speedInert = 0.4;
-	// var predInert  = 0.7;
-	
-	// var zoomAdjustmentSpeed = 0.05;
-	
-	// var gunsSafeDistance = 0.95;
-	// var dropTimeout = 0.7;
-	
-	// var aimTolerance = 20 * 0.0174533;
-	// var aimMinDistance = 11.0;
-	
 	var guns = [];
 	var gunNames = [];
 	for (var itm in items){
@@ -308,6 +297,14 @@ window.gameFunctions.gameUpdate = function(){
 	
 	window.gameVars.Game.Enimies = enimies;
 	
+	// Update enemy lines
+	
+	window.gameVars.Game.EnemyLines.points = enimies.map((enemy) => {
+		return {
+			x: (enemy.pos.x - curPlayer.pos.x) * mapScale,
+			y: (curPlayer.pos.y - enemy.pos.y) * mapScale
+		};
+	});
 	
 	// Update autoaim
 	

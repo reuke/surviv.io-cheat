@@ -7,4 +7,6 @@ window.gameFunctions.gameFree = function(){
 	
 	window.gameVars.Textures.targetTexture = null;
 	window.gameVars.Textures.roundTexture = null;
+	window.gameVars.Game.Laser.draw = null;
+	window.gameVars.Game.EnemyLines.draw = null;
 }
