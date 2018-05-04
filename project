@@ -17,7 +17,6 @@
             <File name="payload\help-ru.html" />
             <File name="payload\glitchLogo.css" />
         </Folder>
-        <File name="background.js" />
         <File name="manifest.json" />
         <File name="start.js" />
         <File name="webpack_override.js" />
