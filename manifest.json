@@ -3,17 +3,8 @@
 	"version": "0.9",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
-		"background",
-		"webRequest",
-		"webNavigation",
-		"activeTab",
-		"webRequestBlocking",
 		"*://surviv.io/*"
 	],
-	"background": {
-		"scripts": ["background.js"],
-		"persistent": true
-	} ,
 	"browser_action": {
 		"default_title": "SURVIV.IO Cheat dev",
 		"default_icon": "128.png"
