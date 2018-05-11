@@ -1,6 +1,6 @@
 {
 	"name": "SURVIV.IO Cheat",
-	"version": "0.10",
+	"version": "0.11",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
 		"*://surviv.io/*"
