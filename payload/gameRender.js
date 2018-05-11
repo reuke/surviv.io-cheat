@@ -40,7 +40,10 @@ window.gameFunctions.gameRender = function(){
 		if(!setting.ceilingAlphaEnabled)
 			return;
 		
-		building.ceiling.sprite.alpha = setting.ceilingAlphaLevel;
+		building.sprites
+			.map((s) => s.sprite)
+			.filter((s) => s.texture.baseTexture.imageUrl.includes("ceiling"))
+			.forEach((s) => s.alpha = setting.ceilingAlphaLevel);
 	}
 	
 	var updateSmokeAplha = function(smoke) {
