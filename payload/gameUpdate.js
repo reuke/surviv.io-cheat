@@ -33,18 +33,8 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 		return 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', 1.0)';
 	}
 	
-	function getMedian(array) {
-		
-		var values = array.slice();
-		
-		values.sort( function(a,b) {return a - b;} );
-
-		var half = Math.floor(values.length/2);
-
-		if(values.length % 2)
-			return values[half];
-		else
-			return (values[half-1] + values[half]) / 2.0;
+	function getMean(array) {
+		return array.reduce((acc, val) => acc + val) / array.length;
 	}
 	
 	// update LAT counter
@@ -65,7 +55,7 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 		this.pings.shift();
 	}
 	
-	var LAT = getMedian(this.pings);
+	var LAT = getMean(this.pings);
 	
 	if(perf.lastLAT) {
 		LAT = LAT * (1 - LATinertia) + perf.lastLAT * LATinertia;
