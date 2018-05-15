@@ -109,14 +109,21 @@ window.gameFunctions.gameUpdate = function(){
 		});
 	}
 	
+	var playerPosListCount = 5;
+	var playerLastRelevantTime = 0.19;
+	
 	var processPlayerSpeed = function(player, inertia) {
 		if(!player)
 			return;
 		
-		if(!player.lastTime || getSecondsElapsed(player.lastTime) > 0.19)
+		var curPosData = {
+			pos: player.pos,
+			time: window.performance.now(),
+		};
+		
+		if(!player.posData || getSecondsElapsed(player.posData[0].time) > playerLastRelevantTime)
 		{
-			player.lastPos = player.pos;
-			player.lastTime = window.performance.now();
+			player.posList = [curPosData];
 			player.prediction = {x:0.0, y:0.0};
 			player.speed = 0.0;
 			player.distance = 0.0;
@@ -125,13 +132,15 @@ window.gameFunctions.gameUpdate = function(){
 			return;
 		}
 		
-		var distance = getDistance(player.pos, player.lastPos);
+		var lastPosData = player.posData[0];
+		
+		var distance = getDistance(curPosData.pos, lastPosData.pos);
 		
 		if(distance > 0.0001)
 		{
 			player.direction = {
-					x: (player.pos.x - player.lastPos.x) / distance,
-					y: (player.pos.y - player.lastPos.y) / distance
+					x: (curPosData.pos.x - lastPosData.pos.x) / distance,
+					y: (curPosData.pos.y - lastPosData.pos.y) / distance
 				}
 		}
 		else
@@ -139,16 +148,18 @@ window.gameFunctions.gameUpdate = function(){
 			player.direction = null;
 		}
 		
-		var speed = distance / getSecondsElapsed(player.lastTime);
+		var speed = distance / getSecondsElapsed(lastPosData.time);
 		
 		if(player.speed)
 			speed = (speed * (1.0 - inertia)) + (player.speed * inertia);
 		
-		
 		player.speed = speed;
 		player.distance = distance;
-		player.lastTime = window.performance.now();
-		player.lastPos = player.pos;
+		player.lastPosData.push(curPosData);
+		
+		while (player.lastPosData.length > playerPosListCount) {
+			player.lastPosData.shift();
+		}
 	};
 	
 	var processEnemy = function(enemy) {
