@@ -123,7 +123,7 @@ window.gameFunctions.gameUpdate = function(){
 		
 		if(!player.posData || getSecondsElapsed(player.posData[0].time) > playerLastRelevantTime)
 		{
-			player.posList = [curPosData];
+			player.posData = [curPosData];
 			player.prediction = {x:0.0, y:0.0};
 			player.speed = 0.0;
 			player.distance = 0.0;
@@ -155,10 +155,10 @@ window.gameFunctions.gameUpdate = function(){
 		
 		player.speed = speed;
 		player.distance = distance;
-		player.lastPosData.push(curPosData);
+		player.posData.push(curPosData);
 		
-		while (player.lastPosData.length > playerPosListCount) {
-			player.lastPosData.shift();
+		while (player.posData.length > playerPosListCount) {
+			player.posData.shift();
 		}
 	};
 	
