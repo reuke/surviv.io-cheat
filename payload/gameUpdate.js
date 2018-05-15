@@ -34,7 +34,7 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	}
 	
 	function getMean(array) {
-		return array.reduce((acc, val) => acc + val) / array.length;
+		return array.length > 0 ?array.reduce((acc, val) => acc + val) / array.length : 1000;
 	}
 	
 	// update LAT counter
