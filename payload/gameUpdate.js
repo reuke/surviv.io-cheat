@@ -291,7 +291,7 @@ window.gameFunctions.gameUpdate = function(){
 	var items = gameData.items;
 	var mapScale = 16.25;
 	
-	var autoFireGuns =  ["fists", "mk12", "m39", "saiga", "m9", "m9_dual", "ot38", "ot38_dual"];
+	var autoFireGuns =  ["fists", "mk12", "m39", "saiga", "m9", "m9_dual", "ot38", "ot38_dual", "deagle", "deagle_dual"];
 	var grenadeTimerWarning = 1.05;
 	
 	var guns = [];
