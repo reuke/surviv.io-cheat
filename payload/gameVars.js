@@ -61,6 +61,7 @@ window.gameVars.Input = {
 	},
 	Keyboard: {
 		RepeatInteraction: false,
+		ShiftPressed: false,
 	}
 };
 
@@ -77,5 +78,16 @@ window.addEventListener('mouseup', function(e) {
 	if(window.gameVars && window.gameVars.Menu)
 		e.stopPropagation();
 });
+
+window.addEventListener('keydown', function(e) {
+	if(e.keyCode === 16 || e.charCode === 16)
+		window.gameVars.Input.Keyboard.ShiftPressed = true;
+});
+
+window.addEventListener('keyup', function(e) {
+	if(e.keyCode === 16 || e.charCode === 16)
+		window.gameVars.Input.Keyboard.ShiftPressed = false;
+});
+
 
 window.gameVars.Textures = {};

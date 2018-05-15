@@ -258,9 +258,38 @@ window.gameFunctions.gameRender = function(){
 		draw.endFill();
 	}
 	
+	var updateNames = function(player) {
+		if(!player || !player.nameText || player.teammate)
+			return;
+		
+		var nameText = player.nameText;
+		
+		if(!nameText.baseSize)
+			nameText.baseSize = {
+				height: nameText.height,
+				width: nameText.width,
+			}
+		
+		if(window.gameVars.Input.Keyboard.ShiftPressed)
+		{
+			nameText.tint = 0x68B0E8;
+			nameText.visible = true;
+			nameText.height = nameText.baseSize.height / window.gameVars.ZoomLevel * 2;
+			nameText.width = nameText.baseSize.width / window.gameVars.ZoomLevel * 2;
+		}
+		else
+		{	
+			nameText.tint = 0XFFFFFF;
+			nameText.visible = false;
+			nameText.height = nameText.baseSize.height;
+			nameText.width = nameText.baseSize.width;
+		}
+	}
+	
 	try {
 		window.gameVars.Game.Enimies.forEach(updateTargetIndicator);
 		window.gameVars.Game.Enimies.forEach(updateRangeIndicator);
+		window.gameVars.Game.Enimies.forEach(updateNames);
 		updateLaser();
 		updateEnemyLines();
 	}
