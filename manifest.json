@@ -3,7 +3,9 @@
 	"version": "0.11",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
-		"*://surviv.io/*"
+		"*://surviv.io/*",
+		"*://surviv2.io/*",
+		"*://2dbattleroyale.com/*"
 	],
 	"browser_action": {
 		"default_title": "SURVIV.IO Cheat dev",
