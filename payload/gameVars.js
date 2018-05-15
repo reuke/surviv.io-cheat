@@ -24,6 +24,17 @@ window.gameVars.ZoomLevel = 0.5;
 window.gameVars.Menu = false;
 window.gameVars.Language = "en";
 
+window.gameVars.UI = {
+	FPSText: null,
+	LATText: null,
+}
+
+window.gameVars.Perfomance = {
+	lastTimeFPS: 0,
+	lastFPS: 0,
+	LAT: null,
+}
+
 window.gameVars.Input = {
 	Mouse: {
 		Pos: {

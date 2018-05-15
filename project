@@ -16,6 +16,7 @@
             <File name="payload\help-en.html" />
             <File name="payload\help-ru.html" />
             <File name="payload\glitchLogo.css" />
+            <File name="payload\FPSCounter.html" />
         </Folder>
         <File name="manifest.json" />
         <File name="start.js" />

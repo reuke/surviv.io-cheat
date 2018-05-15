@@ -31,11 +31,13 @@ var loadFile = function(fileName) {
 		var menuHtml = loadFile('payload/menu.html');
 		var helpEnHtml = loadFile('payload/help-en.html');
 		var helpRuHtml = loadFile('payload/help-ru.html');
+		var counterHtml = loadFile('payload/FPSCounter.html');
 
 		code = "window.tempVars = {" +
 			"menuHtml: `" + menuHtml + "`," +
 			"helpEnHtml: `" + helpEnHtml + "`," +
 			"helpRuHtml: `" + helpRuHtml + "`," +
+			"counterHtml: `" + counterHtml + "`," +
 			"};";
 			
 		e.setAttribute('type', 'text/javascript');

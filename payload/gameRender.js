@@ -268,4 +268,49 @@ window.gameFunctions.gameRender = function(){
 	{
 		console.log(error)
 	}
+	
+	// counters
+	
+	var red = { r: 255, g: 0, b: 0 };
+	var green = { r: 0, g: 255, b: 0 };
+	
+	function getColor(color1, color2, weight) {
+		var w1 = weight;
+		var w2 = 1 - w1;
+		var rgb = [Math.round(color1.r * w1 + color2.r * w2),
+			Math.round(color1.g * w1 + color2.g * w2),
+			Math.round(color1.b * w1 + color2.b * w2)];
+		return rgb;
+	}
+	
+	function getWeight(value, min, max) {
+		if (value <= min) return 0;
+		if (value >= max) return 1;
+		return (max - min) / (value - min);
+	}
+	
+	function colorToString(color) {
+		return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
+	}
+	
+	var perf = window.gameVars.Perfomance;
+	var FPSinertia = 0.2;
+	
+	var FPS = 0;
+	
+	if(perf.lastTimeFPS) {
+		var elapsed = window.performance.now() - perf.lastTimeFPS;
+		FPS = 1000 / elapsed;
+		if(perf.lastFPS) {
+			FPS = FPS * (1 - FPSinertia) + perf.lastFPS * FPSinertia;
+		}
+		perf.lastFPS = FPS;
+	}
+	
+	var FPSCol = getColor(red, green, getWeight(FPS, 5, 40));
+	
+	window.gameVars.Perfomance.lastTimeFPS = window.performance.now();
+	
+	window.gameVars.UI.FPSText.text("FPS: " + FPS);
+	window.gameVars.UI.FPSText.css('color', colorToString(FPSCol));
 }

@@ -9,4 +9,6 @@ window.gameFunctions.gameFree = function(){
 	window.gameVars.Textures.roundTexture = null;
 	window.gameVars.Game.Laser.draw = null;
 	window.gameVars.Game.EnemyLines.draw = null;
+	
+	window.gameVars.Perfomance.lastTimeFPS = 0;
 }
