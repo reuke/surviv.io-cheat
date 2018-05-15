@@ -32,7 +32,8 @@ window.gameVars.UI = {
 window.gameVars.Perfomance = {
 	lastTimeFPS: 0,
 	lastFPS: 0,
-	LAT: null,
+	lastFPSList: [],
+	lastLAT: 0,
 }
 
 window.gameVars.Input = {

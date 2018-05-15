@@ -272,45 +272,76 @@ window.gameFunctions.gameRender = function(){
 	// counters
 	
 	var red = { r: 255, g: 0, b: 0 };
-	var green = { r: 0, g: 255, b: 0 };
+	var green = { r: 0, g: 180, b: 0 };
 	
 	function getColor(color1, color2, weight) {
 		var w1 = weight;
 		var w2 = 1 - w1;
-		var rgb = [Math.round(color1.r * w1 + color2.r * w2),
-			Math.round(color1.g * w1 + color2.g * w2),
-			Math.round(color1.b * w1 + color2.b * w2)];
+		var rgb = {
+			r: Math.round(color1.r * w1 + color2.r * w2),
+			g: Math.round(color1.g * w1 + color2.g * w2),
+			b: Math.round(color1.b * w1 + color2.b * w2)
+		};
 		return rgb;
 	}
 	
 	function getWeight(value, min, max) {
 		if (value <= min) return 0;
 		if (value >= max) return 1;
-		return (max - min) / (value - min);
+		return (value - min) / (max - min);
 	}
 	
 	function colorToString(color) {
-		return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
+		return 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', 1.0)';
 	}
 	
-	var perf = window.gameVars.Perfomance;
-	var FPSinertia = 0.2;
+	function getMedian(array) {
+		
+		var values = array.slice();
+		
+		values.sort( function(a,b) {return a - b;} );
+
+		var half = Math.floor(values.length/2);
+
+		if(values.length % 2)
+			return values[half];
+		else
+			return (values[half-1] + values[half]) / 2.0;
+	}
 	
-	var FPS = 0;
+	// FPS counter
+	
+	var perf = window.gameVars.Perfomance;
+	var FPSinertia = 0.1;
+	var FPSResultsCount = 15;
+	
+	var curFPS = 0;
 	
 	if(perf.lastTimeFPS) {
 		var elapsed = window.performance.now() - perf.lastTimeFPS;
-		FPS = 1000 / elapsed;
-		if(perf.lastFPS) {
-			FPS = FPS * (1 - FPSinertia) + perf.lastFPS * FPSinertia;
-		}
-		perf.lastFPS = FPS;
+		curFPS = 1000 / elapsed;
 	}
 	
-	var FPSCol = getColor(red, green, getWeight(FPS, 5, 40));
+	var FPSList = perf.lastFPSList;
+	
+	FPSList.push(curFPS);
+	
+	while (FPSList.length > FPSResultsCount) {
+		FPSList.shift();
+	}
+	
+	var FPS = getMedian(FPSList);
+	
+	if(perf.lastFPS) {
+		FPS = FPS * (1 - FPSinertia) + perf.lastFPS * FPSinertia;
+	}
+
+	perf.lastFPS = FPS;
+		
+	var FPSCol = getColor(green, red, getWeight(FPS, 5, 40));
 	
 	window.gameVars.Perfomance.lastTimeFPS = window.performance.now();
 	
-	window.gameVars.UI.FPSText.text("FPS: " + FPS);
+	window.gameVars.UI.FPSText.text("FPS: " + Math.round(FPS));
 	window.gameVars.UI.FPSText.css('color', colorToString(FPSCol));
 }

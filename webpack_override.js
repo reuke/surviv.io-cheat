@@ -53,11 +53,18 @@
 						window.gameFunctions.gameRender.call(this);
 					};
 					
-					// render
+					// sendMessage
 					var gameSendMessageBase = exportsVal.exports.prototype.sendMessage;
 					exportsVal.exports.prototype.sendMessage = function(){
 						gameSendMessageBase.apply(this, arguments);
 						window.gameFunctions.gameSendMessage.apply(this, arguments);
+					};
+					
+					// processGameUpdate
+					var gameSrocessGameUpdateBase = exportsVal.exports.prototype.processGameUpdate;
+					exportsVal.exports.prototype.processGameUpdate = function(){
+						gameSrocessGameUpdateBase.apply(this, arguments);
+						window.gameFunctions.gameSrocessGameUpdate.apply(this, arguments);
 					};
 				}
 				
