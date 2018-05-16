@@ -175,7 +175,9 @@ window.gameFunctions.gameUpdate = function(){
 			return;
 		}
 		
-		var bulletReachTime = getDistance(curPlayer.pos, enemy.pos) / curBullet.speed;
+		var bulletReachTime =
+			(getDistance(curPlayer.pos, enemy.pos) / curBullet.speed) +
+			(window.gameVars.Perfomance.lastLAT / 2000);
 		
 		var range = bulletReachTime * enemy.speed;
 		
