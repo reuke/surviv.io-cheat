@@ -30,6 +30,7 @@
 					autoAimRestirctionEnabled: 		true,
 					autoAimRestirctionAngle:		20,
 					autoAimRestrictionCloseRange:	11,
+					autoAimPingCorrectionEnabled:	true,
 					// autoAimAntiAntiCheatEnabled: 	true,
 					// autoAimAntiAntiCheatInertia:	0.4,
 				},
@@ -111,6 +112,7 @@
 					autoAimRestirctionEnabled: 		btnGetState("autoAimRestirctionEnabled"),
 					autoAimRestirctionAngle:		sliderGetValue("autoAimRestirctionAngle"),
 					autoAimRestrictionCloseRange:	sliderGetValue("autoAimRestrictionCloseRange"),
+					autoAimPingCorrectionEnabled:	btnGetState("autoAimPingCorrectionEnabled"),
 					// autoAimAntiAntiCheatEnabled: 	btnGetState("autoAimAntiAntiCheatEnabled"),
 					// autoAimAntiAntiCheatInertia:	sliderGetValue("autoAimAntiAntiCheatInertia"),
 				},
@@ -166,6 +168,7 @@
 			btnSetState("autoAimRestirctionEnabled",		state.autoAimRestirctionEnabled);
 			sliderSetValue("autoAimRestirctionAngle",		state.autoAimRestirctionAngle);
 			sliderSetValue("autoAimRestrictionCloseRange",	state.autoAimRestrictionCloseRange);
+			btnSetState("autoAimPingCorrectionEnabled",		state.autoAimPingCorrectionEnabled);
 			// btnSetState("autoAimAntiAntiCheatEnabled",		state.autoAimAntiAntiCheatEnabled);
 			// sliderSetValue("autoAimAntiAntiCheatInertia",	state.autoAimAntiAntiCheatInertia);
 			
