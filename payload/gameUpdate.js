@@ -372,12 +372,14 @@ window.gameFunctions.gameUpdate = function(){
 	
 	// Update enemy lines
 	
-	window.gameVars.Game.EnemyLines.points = enimies.map((enemy) => {
-		return {
-			x: (enemy.pos.x - curPlayer.pos.x) * mapScale,
-			y: (curPlayer.pos.y - enemy.pos.y) * mapScale
-		};
-	});
+	window.gameVars.Game.EnemyLines.points = enimies
+		.filter((enemy) => !enemy.teammate)
+		.map((enemy) => {
+			return {
+				x: (enemy.pos.x - curPlayer.pos.x) * mapScale,
+				y: (curPlayer.pos.y - enemy.pos.y) * mapScale
+			};
+		});
 	
 	// Update autoaim
 	
