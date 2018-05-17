@@ -62,10 +62,6 @@ runScript('payload/gameUpdate.js');
 runScript('payload/gameRender.js');
 runScript('payload/pingOverride.js');
 
-// document.addEventListener('load', () => {
-
-// });
-
 window.addEventListener("load", function load(event){
     window.removeEventListener("load", load, false); 
 	
@@ -79,15 +75,4 @@ window.addEventListener("load", function load(event){
 			runScript('payload/documentChange.js');
 	});
 },false);
-
-// // injection point
-// runScript('webpack_override.js');
-
-// // appearance
-// runScript('third_party/jquery-3.3.1.min.js',
-	// () => {
-		// runScript('payload/menuAppearance.js');
-		// runScript('payload/documentChange.js');
-// });
-
 
