@@ -37,7 +37,11 @@
 		"webpack_override.js"
 	],
 	"content_scripts": [{
-		"matches": ["*://surviv.io/*"],
+		"matches": [
+			"*://surviv.io/*",
+			"*://surviv2.io/*",
+			"*://2dbattleroyale.com/*"
+		],
 		"js": ["start.js"],
 		"css": ["payload/glitchLogo.css", "payload/menu.css"],
 		"run_at": "document_start"

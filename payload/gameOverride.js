@@ -2,8 +2,6 @@ window.gameFunctions = window.gameFunctions || {};
 window.gameFunctions.gameOverride = function(){
 	this.override = true;
 	
-	console.log("game override fired");
-	
 	// ZOOM
 	
 	var baseCameraTargetZoom = this.camera.targetZoom;
