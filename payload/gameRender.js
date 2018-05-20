@@ -206,9 +206,10 @@ window.gameFunctions.gameRender = function(){
 	}
 	
 	try {
-		window.gameVars.Game.Enimies.forEach(updateTargetIndicator);
-		window.gameVars.Game.Enimies.forEach(updateRangeIndicator);
-		window.gameVars.Game.Enimies.forEach(updateNames);
+		var players = game.playerBarn.playerPool.pool.filter(p => p.__id != game.activePlayer.__id);
+		
+		players.forEach(updateTargetIndicator);
+		players.forEach(updateNames);
 		updateLaser();
 		updateEnemyLines();
 	}
