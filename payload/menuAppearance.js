@@ -51,8 +51,6 @@
 					ceilingAlphaLevel:				0.15,
 					smokeAlphaEnabled: 				true,
 					smokeAlphaLevel:				0.15,
-					outrunRangeEnabled: 			true,
-					predictionsEnabled: 			true,
 					enemyLinesEnabled: 				true,
 				},
 			}
@@ -133,8 +131,6 @@
 					ceilingAlphaLevel:				sliderGetValue("ceilingAlphaLevel"),
 					smokeAlphaEnabled: 				btnGetState("smokeAlphaEnabled"),
 					smokeAlphaLevel:				sliderGetValue("smokeAlphaLevel"),
-					outrunRangeEnabled: 			btnGetState("outrunRangeEnabled"),
-					predictionsEnabled: 			btnGetState("predictionsEnabled"),
 					enemyLinesEnabled: 				btnGetState("enemyLinesEnabled"),
 				},
 			}
@@ -193,8 +189,6 @@
 			sliderSetValue("ceilingAlphaLevel",				state.ceilingAlphaLevel);
 			btnSetState("smokeAlphaEnabled",				state.smokeAlphaEnabled);
 			sliderSetValue("smokeAlphaLevel",				state.smokeAlphaLevel);
-			btnSetState("outrunRangeEnabled",				state.outrunRangeEnabled);
-			btnSetState("predictionsEnabled",				state.predictionsEnabled);
 			btnSetState("enemyLinesEnabled",				state.enemyLinesEnabled);
 		}
 		
