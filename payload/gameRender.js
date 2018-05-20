@@ -180,6 +180,9 @@ window.gameFunctions.gameRender = function(){
 		
 		var nameText = player.nameText;
 		
+		if(nameText.visible)
+			return;
+		
 		if(!nameText.baseSize)
 			nameText.baseSize = {
 				height: nameText.height,
