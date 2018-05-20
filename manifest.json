@@ -43,7 +43,11 @@
 			"*://2dbattleroyale.com/*"
 		],
 		"js": ["start.js"],
-		"css": ["payload/glitchLogo.css", "payload/menu.css"],
+		"css": [
+			"payload/glitchLogo.css", 
+			"payload/menu.css",
+			"payload/disableButtons.css"
+		],
 		"run_at": "document_start"
 	}],
 	"manifest_version": 2,

@@ -35,7 +35,16 @@
 		updateHelp();
 	}
 	
-	$(document).ready(() => addHelp());
+	$(document).ready(() => {
+		addHelp();
+		$("<style>")
+			.prop("type", "text/css")
+			.html("\
+			.menu-option {\
+				pointer-events: all;\
+			}")
+			.appendTo("head");
+	});
 	
 	
 	var updateLang = function() {
