@@ -71,8 +71,11 @@ window.gameFunctions.gameRender = function(){
 		if(!targetIndicator)
 		{
 			targetIndicator = window.PIXI.Sprite.from(targetTexture);
+			targetIndicator.visible = false;
 			targetIndicator.scale.x = 0.7;
 			targetIndicator.scale.y = 0.7;
+			targetIndicator.tint = 16711680;
+			targetIndicator.alpha = 0.4;
 			player.container.addChild(targetIndicator);
 			player.targetIndicator = targetIndicator;
 		}
@@ -88,54 +91,7 @@ window.gameFunctions.gameRender = function(){
 			targetIndicator.visible = true;
 			targetIndicator.tint = 16711680;
 			targetIndicator.alpha = 0.4;
-			return;
 		}
-		
-		if(!window.menu.UserSetting.look.predictionsEnabled || player.teammate)
-		{
-			targetIndicator.visible = false;
-			return;
-		}
-		
-		targetIndicator.visible = true;
-		targetIndicator.tint = 0;
-		targetIndicator.alpha = 0.7;
-	}
-
-	var updateRangeIndicator = function(player) {
-		if(!player || !player.range)
-			return;
-		
-		var rangeIndicator = player.rangeIndicator;
-		
-		if(!rangeIndicator)
-		{
-			rangeIndicator = window.PIXI.Sprite.from(roundTexture);
-			rangeIndicator.alpha = 0.4;
-			player.container.addChild(rangeIndicator);
-			player.rangeIndicator = rangeIndicator;
-		}
-		
-		if(!window.menu.UserSetting.look.outrunRangeEnabled || player.teammate)
-		{
-			rangeIndicator.visible = false;
-			return;
-		}
-		else if(player.range < 10 || player.range > 50)
-		{
-			rangeIndicator.visible = false;
-			return;
-		}
-		
-		var drawRange = player.range + (37 / 2);
-		
-		var scale = (drawRange * 2) / 72
-		
-		rangeIndicator.visible = true;
-		rangeIndicator.scale.x = scale;
-		rangeIndicator.scale.y = scale;
-		rangeIndicator.position.x = rangeIndicator.width * -0.5;
-		rangeIndicator.position.y = rangeIndicator.height * -0.5;
 	}
 	
 	var updateLaser = function() {
