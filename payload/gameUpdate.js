@@ -102,7 +102,7 @@ window.gameFunctions.gameUpdate = function(){
 				return playerObject && 
 				(!playerObject.netData.dead) && 
 				(!playerObject.netData.downed) &&
-				(game.playerBarn.playerInfo[id].teamId != selfTeamId || (playerObject.teammate = true)) &&
+				!(game.playerBarn.playerInfo[id].teamId == selfTeamId && (playerObject.teammate = true)) &&
 				id != selfId;})
 			.map(function(id) {
 				return game.objectCreator.idToObj[id];
