@@ -86,12 +86,7 @@ window.gameFunctions.gameRender = function(){
 		targetIndicator.position.x = targetIndicator.width * -0.5 + player.prediction.x;
 		targetIndicator.position.y = targetIndicator.height * -0.5 + player.prediction.y;
 		
-		if(player == window.gameVars.Game.Target)
-		{
-			targetIndicator.visible = true;
-			targetIndicator.tint = 16711680;
-			targetIndicator.alpha = 0.4;
-		}
+		targetIndicator.visible = player == window.gameVars.Game.Target;
 	}
 	
 	var updateLaser = function() {
