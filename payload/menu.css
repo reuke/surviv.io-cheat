@@ -15,11 +15,9 @@ span.highlight_help {
     color: #bfa100 !important;
 }
 
-.tooltip {
+.tooltip-text {
 	pointer-events: none;
     visibility: hidden;
-	/* display: block; */
-    /* float: left; */
     background-color: rgba(0, 0, 0, 0.7);
     padding: 5px;
     border-radius: 5px;
@@ -27,11 +25,11 @@ span.highlight_help {
     z-index: 1;
 }
 
-.button-container:hover .tooltip {
+.button-container:hover .tooltip-text {
     visibility: visible;
 }
 
-.slider-container:hover .tooltip {
+.slider-container:hover .tooltip-text {
     visibility: visible;
 }
 
