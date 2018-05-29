@@ -53,6 +53,37 @@
 					smokeAlphaLevel:				0.15,
 					enemyLinesEnabled: 				true,
 				},
+				binds: {
+					autoAim: {code: -2, shift: false, ctrl: false, alt: false},
+					switchMainWeapon: {code: 81, shift: false, ctrl: false, alt: false},
+					zoomIn: {code: -5, shift: false, ctrl: false, alt: false},
+					zoomOut: {code: -4, shift: false, ctrl: false, alt: false},
+					displayNames: {code: 16, shift: false, ctrl: false, alt: false},
+					streamerMode: {code: 80, shift: false, ctrl: false, alt: false},
+					goUp: {code: 87, shift: false, ctrl: false, alt: false},
+					goLeft: {code: 65, shift: false, ctrl: false, alt: false},
+					goDown: {code: 83, shift: false, ctrl: false, alt: false},
+					goRight: {code: 68, shift: false, ctrl: false, alt: false},
+					shoot: {code: -1, shift: false, ctrl: false, alt: false},
+					reload: {code: 82, shift: false, ctrl: false, alt: false},
+					interact: {code: 70, shift: false, ctrl: false, alt: false},
+					cancelAction: {code: 88, shift: false, ctrl: false, alt: false},
+					teamPing: {code: 67, shift: false, ctrl: false, alt: false},
+					emotes: {code: 66, shift: false, ctrl: false, alt: false},
+					toggleMap: {code: 77, shift: false, ctrl: false, alt: false},
+					toggleMiniMap: {code: 86, shift: false, ctrl: false, alt: false},
+					equipLast: {code: 81, shift: false, ctrl: false, alt: false},
+					equipNext: {code: 0, shift: false, ctrl: false, alt: false},
+					equipPrev: {code: 0, shift: false, ctrl: false, alt: false},
+					equipWeapon1: {code: 49, shift: false, ctrl: false, alt: false},
+					equipWeapon2: {code: 50, shift: false, ctrl: false, alt: false},
+					equipWeapon3: {code: 51, shift: false, ctrl: false, alt: false},
+					equipWeapon4: {code: 52, shift: false, ctrl: false, alt: false},
+					useMedical7: {code: 55, shift: false, ctrl: false, alt: false},
+					useMedical8: {code: 56, shift: false, ctrl: false, alt: false},
+					useMedical9: {code: 57, shift: false, ctrl: false, alt: false},
+					useMedical0: {code: 48, shift: false, ctrl: false, alt: false},
+				}
 			}
 		}
 		
@@ -99,41 +130,39 @@
 				return $("#slider-" + slider).val();
 			}
 			
-			window.menu.UserSetting = {
-				shoot: {
-					lasersightEnabled: 				btnGetState("lasersightEnabled"),
-					fragGrenadeTimerEnabled: 		btnGetState("fragGrenadeTimerEnabled"),
-					bumpFireEnabled: 				btnGetState("bumpFireEnabled"),
-					autoAimEnabled: 				btnGetState("autoAimEnabled"),
-					autoAimSpeedInertia:			sliderGetValue("autoAimSpeedInertia"),
-					autoAimPredictionInertia:		sliderGetValue("autoAimPredictionInertia"),
-					autoAimRestirctionEnabled: 		btnGetState("autoAimRestirctionEnabled"),
-					autoAimRestirctionAngle:		sliderGetValue("autoAimRestirctionAngle"),
-					autoAimRestrictionCloseRange:	sliderGetValue("autoAimRestrictionCloseRange"),
-					autoAimPingCorrectionEnabled:	btnGetState("autoAimPingCorrectionEnabled"),
-					// autoAimAntiAntiCheatEnabled: 	btnGetState("autoAimAntiAntiCheatEnabled"),
-					// autoAimAntiAntiCheatInertia:	sliderGetValue("autoAimAntiAntiCheatInertia"),
-				},
-				loot: {
-					// lootHighlightEnabled: 			btnGetState("lootHighlightEnabled"),
-					autolootEnabled: 				btnGetState("autolootEnabled"),
-					autolootSafeDistance:			sliderGetValue("autolootSafeDistance"),
-					autolootDropDelay:				sliderGetValue("autolootDropDelay"),
-				},
-				look: {
-					zoomEnabled: 					btnGetState("zoomEnabled"),
-					zoomSpeed:						sliderGetValue("zoomSpeed"),
-					obstaclesAlphaEnabled: 			btnGetState("obstaclesAlphaEnabled"),
-					obstaclesAlphaTreeLevel:		sliderGetValue("obstaclesAlphaTreeLevel"),
-					obstaclesAlphaBushLevel:		sliderGetValue("obstaclesAlphaBushLevel"),
-					obstaclesAlphaTableLevel:		sliderGetValue("obstaclesAlphaTableLevel"),
-					ceilingAlphaEnabled: 			btnGetState("ceilingAlphaEnabled"),
-					ceilingAlphaLevel:				sliderGetValue("ceilingAlphaLevel"),
-					smokeAlphaEnabled: 				btnGetState("smokeAlphaEnabled"),
-					smokeAlphaLevel:				sliderGetValue("smokeAlphaLevel"),
-					enemyLinesEnabled: 				btnGetState("enemyLinesEnabled"),
-				},
-			}
+			window.menu.UserSetting.shoot: {
+				lasersightEnabled: 				btnGetState("lasersightEnabled"),
+				fragGrenadeTimerEnabled: 		btnGetState("fragGrenadeTimerEnabled"),
+				bumpFireEnabled: 				btnGetState("bumpFireEnabled"),
+				autoAimEnabled: 				btnGetState("autoAimEnabled"),
+				autoAimSpeedInertia:			sliderGetValue("autoAimSpeedInertia"),
+				autoAimPredictionInertia:		sliderGetValue("autoAimPredictionInertia"),
+				autoAimRestirctionEnabled: 		btnGetState("autoAimRestirctionEnabled"),
+				autoAimRestirctionAngle:		sliderGetValue("autoAimRestirctionAngle"),
+				autoAimRestrictionCloseRange:	sliderGetValue("autoAimRestrictionCloseRange"),
+				autoAimPingCorrectionEnabled:	btnGetState("autoAimPingCorrectionEnabled"),
+				// autoAimAntiAntiCheatEnabled: 	btnGetState("autoAimAntiAntiCheatEnabled"),
+				// autoAimAntiAntiCheatInertia:	sliderGetValue("autoAimAntiAntiCheatInertia"),
+			};
+			window.menu.UserSetting.loot: {
+				// lootHighlightEnabled: 			btnGetState("lootHighlightEnabled"),
+				autolootEnabled: 				btnGetState("autolootEnabled"),
+				autolootSafeDistance:			sliderGetValue("autolootSafeDistance"),
+				autolootDropDelay:				sliderGetValue("autolootDropDelay"),
+			};
+			window.menu.UserSetting.look: {
+				zoomEnabled: 					btnGetState("zoomEnabled"),
+				zoomSpeed:						sliderGetValue("zoomSpeed"),
+				obstaclesAlphaEnabled: 			btnGetState("obstaclesAlphaEnabled"),
+				obstaclesAlphaTreeLevel:		sliderGetValue("obstaclesAlphaTreeLevel"),
+				obstaclesAlphaBushLevel:		sliderGetValue("obstaclesAlphaBushLevel"),
+				obstaclesAlphaTableLevel:		sliderGetValue("obstaclesAlphaTableLevel"),
+				ceilingAlphaEnabled: 			btnGetState("ceilingAlphaEnabled"),
+				ceilingAlphaLevel:				sliderGetValue("ceilingAlphaLevel"),
+				smokeAlphaEnabled: 				btnGetState("smokeAlphaEnabled"),
+				smokeAlphaLevel:				sliderGetValue("smokeAlphaLevel"),
+				enemyLinesEnabled: 				btnGetState("enemyLinesEnabled"),
+			};
 		}
 			
 			
@@ -148,6 +177,20 @@
 				var cap = $("#menu-text-" + slider).text();
 				$("#menu-text-" + slider).text(cap.substr(0, cap.indexOf(': ') + 2) +  value.toString())
 				$("#slider-" + slider).val(value);
+			}
+			
+			var btnSetBind = function(btn, bind){
+				var btn = $("#btn-bind-" + btn);
+				var cap = btn.text();
+				cap = cap.substr(0, cap.indexOf(': ') + 2);
+				
+				var keyName =
+				bind.ctrl ? "Ctrl-" : "" +
+				bind.alt ? "Alt-" : "" +
+				bind.shift ? "Shift-" : "" +
+				window.Input.keycodes.find(k => k.id == bind.code).name;
+				
+				btn.text(cap +  keyName)
 			}
 			
 			var state = {};
@@ -190,6 +233,9 @@
 			btnSetState("smokeAlphaEnabled",				state.smokeAlphaEnabled);
 			sliderSetValue("smokeAlphaLevel",				state.smokeAlphaLevel);
 			btnSetState("enemyLinesEnabled",				state.enemyLinesEnabled);
+			
+			//binds
+			
 		}
 		
 		var changeTab = function(tabName){
@@ -228,6 +274,19 @@
 				});
 			}
 			
+			var btnBindSetEvent = function(btn, tab){
+				
+				var btnElement = $("#btn-bind-" + btn);
+				var name = btn;
+				var tabb = tab;
+				
+				btnElement.click(() => {
+					window.menu.UserSetting[tabb][name] = !window.menu.UserSetting[tabb][name];
+					saveSetting();
+					updateMenu();
+				});
+			}
+			
 			var sliderSetEvent = function(slider, tab){
 				var sliderElement = $("#slider-" + slider);
 				var name = slider;
@@ -255,6 +314,8 @@
 				for (var name in window.menu.UserSetting[tab]) {
 					if(endsWith(name, "Enabled"))
 						btnSetEvent(name, tab);
+					else if(name.indexOf("bind") != -1)
+						btnBindSetEvent(name, tab);
 					else
 						sliderSetEvent(name, tab);
 				}

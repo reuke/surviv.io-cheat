@@ -28,20 +28,66 @@ window.gameFunctions.gameOverride = function(){
 	
 	// INPUT
 	
-	var inputOnMouseMoveBase = this.input.onMouseMove;
+	var processInput = function(keybind){
+		
+	}
+	
+	// keyboard
+	
+	var onKeyDownBase = this.input.onKeyDown;
+	this.input.onKeyDown = function(e){
+		
+	};
+	var onKeyUpBase = this.input.onKeyUp;
+	this.input.onKeyUp = function(e){
+		
+	};
+	
+	// mouse
+	
+	var onMouseMoveBase = this.input.onMouseMove;
 	this.input.onMouseMove = function(e){
 		if(window.gameVars){
 			window.gameVars.Input.Mouse.Pos.x = e.clientX;
 			window.gameVars.Input.Mouse.Pos.y = e.clientY;
 			
 			if(window.gameVars.Input.Mouse.AimActive) {
-				e.__defineGetter__("clientX", () => window.gameVars.Input.Mouse.AimPos.x);
-				e.__defineGetter__("clientY", () => window.gameVars.Input.Mouse.AimPos.y);
+				e.clientX = window.gameVars.Input.Mouse.AimPos.x;
+				e.clientY = window.gameVars.Input.Mouse.AimPos.y;
 			}
 		}
 		
-		inputOnMouseMoveBase.call(this, e);
+		onMouseMoveBase.call(this, e);
 	};
+	var onMouseDownBase = this.input.onMouseDown;
+	this.input.onMouseDown = function(e){
+		
+	};
+	var onMouseUpBase = this.input.onMouseUp;
+	this.input.onMouseUp = function(e){
+		
+	};
+	var onMouseWheelBase = this.input.onMouseWheel;
+	this.input.onMouseWheel = function(e){
+		
+	};
+	
+	// var onMouseMoveBase = this.input.onMouseMove;
+	// this.input.onMouseMove = function(e){
+		// if(window.gameVars){
+			// window.gameVars.Input.Mouse.Pos.x = e.clientX;
+			// window.gameVars.Input.Mouse.Pos.y = e.clientY;
+			
+			// if(window.gameVars.Input.Mouse.AimActive) {
+				// e.__defineGetter__("clientX", () => window.gameVars.Input.Mouse.AimPos.x);
+				// e.__defineGetter__("clientY", () => window.gameVars.Input.Mouse.AimPos.y);
+			// }
+		// }
+		
+		// onMouseMoveBase.call(this, e);
+	// };
+	
+	// repeating actions
 	
 	var inputOnMouseWheelBase = this.input.onMouseWheel;
 	this.input.onMouseWheel = function(e){

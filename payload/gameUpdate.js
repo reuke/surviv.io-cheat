@@ -53,10 +53,8 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	var LATinertia = 0.2;
 	var LATResultsCount = 5;
 	
-	var ping = time - this.seqSendTime;
+	var ping = (new Date).getTime() - this.seqSendTime;
 	
-	
-	var time = (new Date).getTime();
 	if (mesg.ack == this.seq && this.seqInFlight) {
 		this.seqInFlight = false;
 		this.pings.push(ping);
@@ -64,8 +62,6 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 		while (this.pings.length > LATResultsCount) {
 			this.pings.shift();
 		}
-		
-		console.log(this.pings);
 	}
 	
 	// update LAT counter
@@ -93,13 +89,13 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	var LAGinertia = 0.2;
 	
 	var minCountingLag = 20;
-	var maxCountingLag = 100;
+	var maxCountingLag = 100 - minCountingLag;
 	
 	var minCountingLatLag = 180;
-	var maxCountingLatLag = 250;
+	var maxCountingLatLag = 250 - minCountingLatLag;
 	
 	var newDevLAG = (currLag - minCountingLag) / maxCountingLag;
-	var newLatLAG = (ping - minCountingLatLag) / maxCountingLatLag;
+	var newLatLAG = this.seqInFlight ? (ping - minCountingLatLag) / maxCountingLatLag : 0.0;
 	
 	var newLAG = Math.max(newDevLAG, newLatLAG);
 	
