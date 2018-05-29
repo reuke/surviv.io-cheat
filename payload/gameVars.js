@@ -39,6 +39,7 @@ window.gameVars.Perfomance = {
 }
 
 window.gameVars.Input = {
+	GlobalHookCallback: null,
 	Mouse: {
 		Pos: {
 			x: 0.0,

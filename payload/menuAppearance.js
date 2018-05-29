@@ -281,9 +281,12 @@
 				var tabb = tab;
 				
 				btnElement.click(() => {
-					window.menu.UserSetting[tabb][name] = !window.menu.UserSetting[tabb][name];
-					saveSetting();
-					updateMenu();
+					window.gameVars.Input.GlobalHookCallback = function(bind) {
+						window.gameVars.Input.GlobalHookCallback = null;
+						window.menu.UserSetting[tabb][name] = bind;
+						saveSetting();
+						updateMenu();
+					}
 				});
 			}
 			
