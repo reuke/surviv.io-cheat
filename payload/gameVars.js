@@ -27,6 +27,7 @@ window.gameVars.Language = "en";
 window.gameVars.UI = {
 	FPSText: null,
 	LATText: null,
+	LAGText: null,
 }
 
 window.gameVars.Perfomance = {
@@ -34,6 +35,7 @@ window.gameVars.Perfomance = {
 	lastFPS: 0,
 	lastFPSList: [],
 	lastLAT: 0,
+	lastLAG: 0,
 }
 
 window.gameVars.Input = {

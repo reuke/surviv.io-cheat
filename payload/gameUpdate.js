@@ -12,6 +12,18 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	var red = { r: 255, g: 0, b: 0 };
 	var green = { r: 0, g: 180, b: 0 };
 	
+	function nthroot(x, n) {
+		try {
+			var negate = n % 2 == 1 && x < 0;
+			if(negate)
+				x = -x;
+			var possible = Math.pow(x, 1 / n);
+			n = Math.pow(possible, n);
+			if(Math.abs(x - n) < 1 && (x > 0 == n > 0))
+				return negate ? -possible : possible;
+		} catch(e){}
+	}
+	
 	function getColor(color1, color2, weight) {
 		var w1 = weight;
 		var w2 = 1 - w1;
@@ -37,24 +49,27 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 		return array.length > 0 ?array.reduce((acc, val) => acc + val) / array.length : 1000;
 	}
 	
-	// update LAT counter
-	
 	var perf = window.gameVars.Perfomance;
-	var LATinertia = 0.1;
-	var LATResultsCount = 15;
+	var LATinertia = 0.2;
+	var LATResultsCount = 5;
+	
+	var ping = time - this.seqSendTime;
 	
 	
 	var time = (new Date).getTime();
 	if (mesg.ack == this.seq && this.seqInFlight) {
 		this.seqInFlight = false;
-		var ping = time - this.seqSendTime;
 		this.pings.push(ping);
+	
+		while (this.pings.length > LATResultsCount) {
+			this.pings.shift();
+		}
+		
+		console.log(this.pings);
 	}
 	
-	while (this.pings.length > LATResultsCount) {
-		this.pings.shift();
-	}
-	
+	// update LAT counter
+		
 	var LAT = getMean(this.pings);
 	
 	if(perf.lastLAT) {
@@ -67,6 +82,42 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	
 	window.gameVars.UI.LATText.text("LAT: " + Math.round(LAT));
 	window.gameVars.UI.LATText.css('color', colorToString(LATCol));
+
+	// update LAG counter
+	
+	var minLag = Math.min.apply(null, this.pings);
+	var maxLag = Math.max.apply(null, this.pings);
+		
+	var currLag = maxLag - minLag;
+	
+	var LAGinertia = 0.2;
+	
+	var minCountingLag = 20;
+	var maxCountingLag = 100;
+	
+	var minCountingLatLag = 180;
+	var maxCountingLatLag = 250;
+	
+	var newDevLAG = (currLag - minCountingLag) / maxCountingLag;
+	var newLatLAG = (ping - minCountingLatLag) / maxCountingLatLag;
+	
+	var newLAG = Math.max(newDevLAG, newLatLAG);
+	
+	newLAG = newLAG < 0.01 ? 0.01 : newLAG > 0.99 ? 0.99 : newLAG;
+	
+	newLAG = (newLAG - 0.5) * 2;
+	newLAG = nthroot(newLAG, 3);
+	newLAG = newLAG / 2 + 0.5;
+	
+	newLAG = newLAG < 0.1 ? 0 : newLAG > 0.9 ? 1.0 : newLAG;
+	
+	if(perf.lastLAG) {
+		newLAG = newLAG * (1 - LAGinertia) + perf.lastLAG * LAGinertia;
+	}
+	
+	perf.lastLAG = newLAG;
+	
+	window.gameVars.UI.LAGText.fadeTo(0, newLAG);
 }
 	
 window.gameFunctions.gameUpdate = function(){
