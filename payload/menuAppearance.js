@@ -130,7 +130,7 @@
 				return $("#slider-" + slider).val();
 			}
 			
-			window.menu.UserSetting.shoot: {
+			window.menu.UserSetting.shoot = {
 				lasersightEnabled: 				btnGetState("lasersightEnabled"),
 				fragGrenadeTimerEnabled: 		btnGetState("fragGrenadeTimerEnabled"),
 				bumpFireEnabled: 				btnGetState("bumpFireEnabled"),
@@ -144,13 +144,13 @@
 				// autoAimAntiAntiCheatEnabled: 	btnGetState("autoAimAntiAntiCheatEnabled"),
 				// autoAimAntiAntiCheatInertia:	sliderGetValue("autoAimAntiAntiCheatInertia"),
 			};
-			window.menu.UserSetting.loot: {
+			window.menu.UserSetting.loot = {
 				// lootHighlightEnabled: 			btnGetState("lootHighlightEnabled"),
 				autolootEnabled: 				btnGetState("autolootEnabled"),
 				autolootSafeDistance:			sliderGetValue("autolootSafeDistance"),
 				autolootDropDelay:				sliderGetValue("autolootDropDelay"),
 			};
-			window.menu.UserSetting.look: {
+			window.menu.UserSetting.look = {
 				zoomEnabled: 					btnGetState("zoomEnabled"),
 				zoomSpeed:						sliderGetValue("zoomSpeed"),
 				obstaclesAlphaEnabled: 			btnGetState("obstaclesAlphaEnabled"),

@@ -104,7 +104,7 @@ window.addEventListener('keyup', function(e) {
 
 window.gameVars.Textures = {};
 
-window.Input.keycodes = [{
+window.gameVars.Input.keycodes = [{
     "id": 0,
     "name": "None"
 }, {

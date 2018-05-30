@@ -29,13 +29,18 @@ window.gameFunctions.gameOverride = function(){
 	// INPUT
 	
 	var processInput = function(keybind){
-		
+		// always pass Esc
+		if(keybind == 27) return 27
 	}
 	
 	// keyboard
 	
 	var onKeyDownBase = this.input.onKeyDown;
 	this.input.onKeyDown = function(e){
+		
+		var newCode = processInput(e.Code)
+		
+		if(newCode < 1)
 		
 	};
 	var onKeyUpBase = this.input.onKeyUp;

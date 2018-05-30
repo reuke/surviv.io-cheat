@@ -58,12 +58,14 @@ window.gameFunctions.pingOverride = function(){
 		
 		this.override.tempWorking = true;
 		
-		if(event.which == 66)
-			this.override.emoteTriggered = true;
-		
-		
-		if(event.which == 67)
-			this.override.pingTriggered = true;
+		try{
+			if(event.which == 66)
+				this.override.emoteTriggered = true;
+			
+			if(event.which == 67)
+				this.override.pingTriggered = true;
+		}
+		catch {}
 
 		this.override.tempWorking = false;
 	});
@@ -74,12 +76,15 @@ window.gameFunctions.pingOverride = function(){
 		
 		this.override.tempWorking = true;
 		
-		if(event.which == 66)
-			this.triggerEmote.call(this);
-		
-		
-		if(event.which == 67)
-			this.triggerPing.call(this);
+		try{
+			if(event.which == 66)
+				this.triggerEmote.call(this);
+			
+			
+			if(event.which == 67)
+				this.triggerPing.call(this);
+		}
+		catch {}
 
 		this.override.tempWorking = false;
 	});
