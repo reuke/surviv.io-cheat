@@ -54,7 +54,7 @@
 					enemyLinesEnabled: 				true,
 				},
 				binds: {
-					autoAim: {code: -2, shift: false, ctrl: false, alt: false},
+					autoAim: {code: -3, shift: false, ctrl: false, alt: false},
 					switchMainWeapon: {code: 81, shift: false, ctrl: false, alt: false},
 					zoomIn: {code: -5, shift: false, ctrl: false, alt: false},
 					zoomOut: {code: -4, shift: false, ctrl: false, alt: false},
@@ -185,10 +185,10 @@
 				cap = cap.substr(0, cap.indexOf(': ') + 2);
 				
 				var keyName =
-				bind.ctrl ? "Ctrl-" : "" +
-				bind.alt ? "Alt-" : "" +
-				bind.shift ? "Shift-" : "" +
-				window.Input.keycodes.find(k => k.id == bind.code).name;
+				(bind.ctrl ? "Ctrl-" : "") +
+				(bind.alt ? "Alt-" : "") +
+				(bind.shift ? "Shift-" : "") +
+				window.gameVars.Input.Keys.NameOf(bind.code);
 				
 				btn.text(cap +  keyName)
 			}
@@ -208,8 +208,8 @@
 			sliderSetValue("autoAimRestirctionAngle",		state.autoAimRestirctionAngle);
 			sliderSetValue("autoAimRestrictionCloseRange",	state.autoAimRestrictionCloseRange);
 			btnSetState("autoAimPingCorrectionEnabled",		state.autoAimPingCorrectionEnabled);
-			// btnSetState("autoAimAntiAntiCheatEnabled",		state.autoAimAntiAntiCheatEnabled);
-			// sliderSetValue("autoAimAntiAntiCheatInertia",	state.autoAimAntiAntiCheatInertia);
+			// btnSetState("autoAimAntiAntiCheatEnabled",	state.autoAimAntiAntiCheatEnabled);
+			// sliderSetValue("autoAimAntiAntiCheatInertia",state.autoAimAntiAntiCheatInertia);
 			
 			// loot
 			state = window.menu.UserSetting.loot;
@@ -235,7 +235,37 @@
 			btnSetState("enemyLinesEnabled",				state.enemyLinesEnabled);
 			
 			//binds
+			state = window.menu.UserSetting.binds;
 			
+			btnSetBind("autoAim",							state.autoAim);
+			btnSetBind("switchMainWeapon",					state.switchMainWeapon);
+			btnSetBind("zoomIn",							state.zoomIn);
+			btnSetBind("zoomOut",							state.zoomOut);
+			btnSetBind("displayNames",						state.displayNames);
+			btnSetBind("streamerMode",						state.streamerMode);
+			btnSetBind("goUp",								state.goUp);
+			btnSetBind("goLeft",							state.goLeft);
+			btnSetBind("goDown",							state.goDown);
+			btnSetBind("goRight",							state.goRight);
+			btnSetBind("shoot",								state.shoot);
+			btnSetBind("reload",							state.reload);
+			btnSetBind("interact",							state.interact);
+			btnSetBind("cancelAction",						state.cancelAction);
+			btnSetBind("teamPing",							state.teamPing);
+			btnSetBind("emotes",							state.emotes);
+			btnSetBind("toggleMap",							state.toggleMap);
+			btnSetBind("toggleMiniMap",						state.toggleMiniMap);
+			btnSetBind("equipLast",							state.equipLast);
+			btnSetBind("equipNext",							state.equipNext);
+			btnSetBind("equipPrev",							state.equipPrev);
+			btnSetBind("equipWeapon1",						state.equipWeapon1);
+			btnSetBind("equipWeapon2",						state.equipWeapon2);
+			btnSetBind("equipWeapon3",						state.equipWeapon3);
+			btnSetBind("equipWeapon4",						state.equipWeapon4);
+			btnSetBind("useMedical7",						state.useMedical7);
+			btnSetBind("useMedical8",						state.useMedical8);
+			btnSetBind("useMedical9",						state.useMedical9);
+			btnSetBind("useMedical0",						state.useMedical0);
 		}
 		
 		var changeTab = function(tabName){
@@ -257,6 +287,7 @@
 			updateTabCategory("shoot");
 			updateTabCategory("loot");
 			updateTabCategory("look");
+			updateTabCategory("bind");
 		}
 		
 		var setEvents = function(tabName){
@@ -327,6 +358,7 @@
 			tabSetEvent("shoot");
 			tabSetEvent("loot");
 			tabSetEvent("look");
+			tabSetEvent("bind");
 		}
 		
 		var menuTimer = function(){

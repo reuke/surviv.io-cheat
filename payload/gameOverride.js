@@ -28,24 +28,108 @@ window.gameFunctions.gameOverride = function(){
 	
 	// INPUT
 	
-	var processInput = function(keybind){
+	var inpt = this.input;
+	
+	var processInput = function(bind, down){
 		// always pass Esc
-		if(keybind == 27) return 27
+		if(bind.code == 27) return keyboardEvent(27, down);
+		
+		var opt = window.menu.UserSetting.binds;
+		
+		if(checkBind(opt.autoAim, bind)) {
+			
+		}else if(checkBind(opt.switchMainWeapon, bind)) {
+
+		}else if(checkBind(opt.zoomIn, bind)) {
+
+		}else if(checkBind(opt.zoomOut, bind)) {
+
+		}else if(checkBind(opt.displayNames, bind)) {
+
+		}else if(checkBind(opt.streamerMode, bind)) {
+
+		}else if(checkBind(opt.goUp, bind)) {
+
+		}else if(checkBind(opt.goLeft, bind)) {
+
+		}else if(checkBind(opt.goDown, bind)) {
+
+		}else if(checkBind(opt.goRight, bind)) {
+
+		}else if(checkBind(opt.shoot, bind)) {
+
+		}else if(checkBind(opt.reload, bind)) {
+
+		}else if(checkBind(opt.interact, bind)) {
+
+		}else if(checkBind(opt.cancelAction, bind)) {
+
+		}else if(checkBind(opt.teamPing, bind)) {
+
+		}else if(checkBind(opt.emotes, bind)) {
+
+		}else if(checkBind(opt.toggleMap, bind)) {
+
+		}else if(checkBind(opt.toggleMiniMap, bind)) {
+
+		}else if(checkBind(opt.equipLast, bind)) {
+
+		}else if(checkBind(opt.equipNext, bind)) {
+
+		}else if(checkBind(opt.equipPrev, bind)) {
+
+		}else if(checkBind(opt.equipWeapon1, bind)) {
+
+		}else if(checkBind(opt.equipWeapon2, bind)) {
+
+		}else if(checkBind(opt.equipWeapon3, bind)) {
+
+		}else if(checkBind(opt.equipWeapon4, bind)) {
+
+		}else if(checkBind(opt.useMedical7, bind)) {
+
+		}else if(checkBind(opt.useMedical8, bind)) {
+
+		}else if(checkBind(opt.useMedical9, bind)) {
+
+		}else if(checkBind(opt.useMedical0, bind)) {
+
+		}
+	}
+	
+	var checkBind = function(ref, bind){
+		return ref.code == bind.code &&
+		!(ref.shift && !bind.shift) &&
+		!(ref.ctrl && !bind.ctrl) &&
+		!(ref.alt && !bind.alt);
+	}
+	
+	var keyboardEvent = function(code, down){
+		down ? onKeyDownBase.call(inpt, {keyCode: code}) : onKeyUpBase.call(inpt, {keyCode: code});
+	}
+	
+	var mouseButtonEvent = function(buttonCode, down){
+		
+		down ? onMouseDownBase.call(inpt, {keyCode: code}) : onMouseUpBase.call(inpt, {keyCode: code});
 	}
 	
 	// keyboard
 	
 	var onKeyDownBase = this.input.onKeyDown;
 	this.input.onKeyDown = function(e){
-		
-		var newCode = processInput(e.Code)
-		
-		if(newCode < 1)
-		
+		processInput({code: e.keyCode, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
+		if(e.keyCode == 16) return window.gameVars.Input.Keyboard.ShiftPressed = true;
+		if(e.keyCode == 17) return window.gameVars.Input.Keyboard.CtrlPressed = true;
+		if(e.keyCode == 18) return window.gameVars.Input.Keyboard.AltPressed = true;
+		window.gameVars.Input.Keyboard.AnythingElsePressed = true;
 	};
 	var onKeyUpBase = this.input.onKeyUp;
 	this.input.onKeyUp = function(e){
-		
+		processInput({code: e.keyCode, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, false);
+		if(e.keyCode == 16) return window.gameVars.Input.Keyboard.ShiftPressed = false;
+		if(e.keyCode == 17) return window.gameVars.Input.Keyboard.CtrlPressed = false;
+		if(e.keyCode == 18) return window.gameVars.Input.Keyboard.AltPressed = false;
+		window.gameVars.Input.Keyboard.AnythingElsePressed = false;
 	};
 	
 	// mouse
@@ -66,15 +150,21 @@ window.gameFunctions.gameOverride = function(){
 	};
 	var onMouseDownBase = this.input.onMouseDown;
 	this.input.onMouseDown = function(e){
-		
+		var code = e.button * -1 - 1;
+		processInput({code: e.button * -1 - 1, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
 	};
 	var onMouseUpBase = this.input.onMouseUp;
 	this.input.onMouseUp = function(e){
-		
+		processInput({code: e.button * -1 - 1, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, false);
 	};
 	var onMouseWheelBase = this.input.onMouseWheel;
 	this.input.onMouseWheel = function(e){
-		
+		processInput({
+			code: e.deltaY < 0 ? -4 : -5, 
+			shift: window.gameVars.Input.Keyboard.ShiftPressed,
+			ctrl: window.gameVars.Input.Keyboard.CtrlPressed,
+			alt: window.gameVars.Input.Keyboard.AltPressed
+		}, true);
 	};
 	
 	// var onMouseMoveBase = this.input.onMouseMove;

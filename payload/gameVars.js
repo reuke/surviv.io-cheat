@@ -67,6 +67,7 @@ window.gameVars.Input = {
 		ShiftPressed: false,
 		CtrlPressed: false,
 		AltPressed: false,
+		AnythingElsePressed: false,
 	},
 };
 
@@ -104,7 +105,10 @@ window.addEventListener('keyup', function(e) {
 
 window.gameVars.Textures = {};
 
-window.gameVars.Input.keycodes = [{
+window.gameVars.Input.Keys = {};
+window.gameVars.Input.Keys.CodeOf = (name) => window.gameVars.Input.Keys.Codes.find(c => c.name == name).id;
+window.gameVars.Input.Keys.NameOf = (code) => window.gameVars.Input.Keys.Codes.find(c => c.id == code).name;
+window.gameVars.Input.Keys.Codes = [{
     "id": 0,
     "name": "None"
 }, {
@@ -112,16 +116,16 @@ window.gameVars.Input.keycodes = [{
     "name": "LMB"
 }, {
     "id": -2,
-    "name": "RMB"
-}, {
-    "id": -3,
     "name": "MMB"
 }, {
+    "id": -3,
+    "name": "RMB"
+}, {
     "id": -4,
-    "name": "WheelUp"
+    "name": "Wheel Up"
 }, {
     "id": -5,
-    "name": "WheelDown"
+    "name": "Wheel Down"
 }, {
     "id": 8,
     "name": "Backspace"
