@@ -435,7 +435,7 @@ window.gameFunctions.gameUpdate = function(){
 	
 	var target = null;
 	
-	if(window.menu.UserSetting.shoot.autoAimEnabled && window.gameVars.Input.Mouse.RightMouseButton && enimies.length != 0)
+	if(window.menu.UserSetting.shoot.autoAimEnabled && window.gameVars.Input.Cheat.AutoAimPressed && enimies.length != 0)
 	{
 		var mousePos = game.camera.screenToPoint(window.gameVars.Input.Mouse.Pos);
 
@@ -483,7 +483,7 @@ window.gameFunctions.gameUpdate = function(){
 	
 	// Grenade timer
 	
-	if(window.menu.UserSetting.shoot.fragGrenadeTimerEnabled && !game.pieTimer.active &&	curPlayer.weapType == "frag" && game.input.mouseButton)
+	if(window.menu.UserSetting.shoot.fragGrenadeTimerEnabled && !game.pieTimer.active && curPlayer.weapType == "frag" && game.input.mouseButton)
 		runTimer("GRENADE", 4.0);
 	
 	if(game.pieTimer.active  && game.pieTimer.clientData.label == "GRENADE")
@@ -505,9 +505,9 @@ window.gameFunctions.gameUpdate = function(){
 	
 	// Bump fire
 	
-	window.gameVars.Input.Mouse.RepeatFire = !window.gameVars.Menu && window.menu.UserSetting.shoot.bumpFireEnabled && game.input.mouseButton && autoFireGuns.includes(curPlayer.weapType);
+	window.gameVars.Input.Cheat.RepeatFire = !window.gameVars.Menu && window.menu.UserSetting.shoot.bumpFireEnabled && game.input.mouseButton && autoFireGuns.includes(curPlayer.weapType);
 	
 	// Auto loot
 	
-	window.gameVars.Input.Keyboard.RepeatInteraction = window.menu.UserSetting.loot.autolootEnabled && (getSecondsElapsed(state.LastTimeDropItem) > window.menu.UserSetting.loot.autolootDropDelay) && needToLoot();
+	window.gameVars.Input.Cheat.RepeatInteraction = window.menu.UserSetting.loot.autolootEnabled && (getSecondsElapsed(state.LastTimeDropItem) > window.menu.UserSetting.loot.autolootDropDelay) && needToLoot();
 }

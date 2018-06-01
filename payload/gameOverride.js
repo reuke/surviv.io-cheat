@@ -45,9 +45,9 @@ window.gameFunctions.gameOverride = function(){
 		}else if(checkBind(opt.zoomOut, bind)) {
 			window.gameVars.Input.Cheat.ZoomDelta -= 1;
 		}else if(checkBind(opt.displayNames, bind)) {
-			window.gameVars.Input.Cheat.AutoAimPressed = down;
+			window.gameVars.Input.Cheat.ShowNamesPressed = down;
 		}else if(checkBind(opt.streamerMode, bind)) {
-			// window.gameVars.Input.Cheat.
+			
 		}else if(checkBind(opt.goUp, bind)) {
 			keyboardEvent(87, down);
 		}else if(checkBind(opt.goLeft, bind)) {
@@ -57,42 +57,43 @@ window.gameFunctions.gameOverride = function(){
 		}else if(checkBind(opt.goRight, bind)) {
 			keyboardEvent(68, down);
 		}else if(checkBind(opt.shoot, bind)) {
+			mouseButtonEvent(0, down);
 		}else if(checkBind(opt.reload, bind)) {
-			
+			keyboardEvent(82, down);
 		}else if(checkBind(opt.interact, bind)) {
-			
+			keyboardEvent(70, down);
 		}else if(checkBind(opt.cancelAction, bind)) {
-			
+			keyboardEvent(88, down);
 		}else if(checkBind(opt.teamPing, bind)) {
-			
+			triggerPing(down);
 		}else if(checkBind(opt.emotes, bind)) {
-			
+			triggerEmote(down);
 		}else if(checkBind(opt.toggleMap, bind)) {
-			
+			keyboardEvent(77, down);
 		}else if(checkBind(opt.toggleMiniMap, bind)) {
-			
+			keyboardEvent(86, down);
 		}else if(checkBind(opt.equipLast, bind)) {
-			
+			keyboardEvent(81, down);
 		}else if(checkBind(opt.equipNext, bind)) {
-			
+			mouseWheelEvent(1);
 		}else if(checkBind(opt.equipPrev, bind)) {
-			
+			mouseWheelEvent(-1);
 		}else if(checkBind(opt.equipWeapon1, bind)) {
-			
+			keyboardEvent(49, down);
 		}else if(checkBind(opt.equipWeapon2, bind)) {
-			
+			keyboardEvent(50, down);
 		}else if(checkBind(opt.equipWeapon3, bind)) {
-			
+			keyboardEvent(51, down);
 		}else if(checkBind(opt.equipWeapon4, bind)) {
-			
+			keyboardEvent(52, down);
 		}else if(checkBind(opt.useMedical7, bind)) {
-			
+			keyboardEvent(55, down);
 		}else if(checkBind(opt.useMedical8, bind)) {
-			
+			keyboardEvent(56, down);
 		}else if(checkBind(opt.useMedical9, bind)) {
-			
+			keyboardEvent(57, down);
 		}else if(checkBind(opt.useMedical0, bind)) {
-			
+			keyboardEvent(48, down);
 		}
 	}
 	
@@ -109,6 +110,21 @@ window.gameFunctions.gameOverride = function(){
 	
 	var mouseButtonEvent = function(buttonCode, down){
 		down ? onMouseDownBase.call(inpt, {button: buttonCode}) : onMouseUpBase.call(inpt, {button: buttonCode});
+		if(buttonCode == 0) window.gameVars.Input.Cheat.FirePressed = down;
+	}
+	
+	var mouseWheelEvent = function(delta){
+		inputOnMouseWheelBase.call(inpt, {deltaY: delta});
+	}
+	
+	var triggerEmote = function(down) {
+		if(window.Pings && window.Pings.EmoteTrigger)
+			window.Pings.EmoteTrigger(down)
+	}
+	
+	var triggerPing = function(down) {
+		if(window.Pings && window.Pings.PingTrigger)
+			window.Pings.PingTrigger(down)
 	}
 	
 	// keyboard
@@ -148,7 +164,6 @@ window.gameFunctions.gameOverride = function(){
 	};
 	var onMouseDownBase = this.input.onMouseDown;
 	this.input.onMouseDown = function(e){
-		var code = e.button * -1 - 1;
 		processInput({code: e.button * -1 - 1, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
 	};
 	var onMouseUpBase = this.input.onMouseUp;
@@ -182,19 +197,19 @@ window.gameFunctions.gameOverride = function(){
 	
 	// repeating actions
 	
-	var inputOnMouseWheelBase = this.input.onMouseWheel;
-	this.input.onMouseWheel = function(e){
-		if(window.gameVars && window.gameVars.Input.Wheel.HookActive)
-			window.gameVars.Input.Wheel.Delta += (e.deltaY < 0 ? -1 : 1);
-		else
-			inputOnMouseWheelBase.call(this, e);
-	};
+	// var inputOnMouseWheelBase = this.input.onMouseWheel;
+	// this.input.onMouseWheel = function(e){
+		// if(window.gameVars && window.gameVars.Input.Wheel.HookActive)
+			// window.gameVars.Input.Wheel.Delta += (e.deltaY < 0 ? -1 : 1);
+		// else
+			// inputOnMouseWheelBase.call(this, e);
+	// };
 	
 	var inputKeyPressedBase = this.input.keyPressed;
 	this.input.keyPressed = function(e){
 		if(window.gameVars)
 		{
-			if(window.gameVars.Input.Keyboard.RepeatInteraction && e == 70)
+			if(window.gameVars.Input.Cheat.RepeatInteraction && e == 70)
 				return true;
 		}
 		
@@ -203,7 +218,7 @@ window.gameFunctions.gameOverride = function(){
 	
 	var inputMousePressedBase = this.input.mousePressed;
 	this.input.mousePressed = function(){
-		if(window.gameVars && window.gameVars.Input.Mouse.RepeatFire)
+		if(window.gameVars && window.gameVars.Input.Cheat.RepeatFire)
 			return true;
 		
 		return inputMousePressedBase.call(this);
@@ -211,7 +226,7 @@ window.gameFunctions.gameOverride = function(){
 	
 	var inputMouseDownBase = this.input.mouseDown;
 	this.input.mouseDown = function(){
-		if(window.gameVars && window.gameVars.Input.Mouse.RepeatFire)
+		if(window.gameVars && window.gameVars.Input.Cheat.RepeatFire)
 			return false;
 		
 		return inputMouseDownBase.call(this);

@@ -51,43 +51,67 @@ window.gameFunctions.pingOverride = function(){
 		return this.override.emoteTriggered
 	});
 	
-	//EVENTS
-	document.addEventListener('keydown', (event) => {
-		if(this.override.pingTriggered || this.override.emoteTriggered)
-			return;
-		
-		this.override.tempWorking = true;
-		
-		try{
-			if(event.which == 66)
-				this.override.emoteTriggered = true;
-			
-			if(event.which == 67)
-				this.override.pingTriggered = true;
-		}
-		catch {}
-
-		this.override.tempWorking = false;
-	});
+	var currentContext
 	
-	document.addEventListener('keyup', (event) => {
-		if(!this.override.pingTriggered && !this.override.emoteTriggered)
-			return;
+	window.Pings = {}
+	
+	window.Pings.EmoteTrigger = function(down) {
+		currentContext.override.tempWorking = true;
 		
-		this.override.tempWorking = true;
+		down ? 
+		currentContext.override.emoteTriggered = true : 
+		currentContext.triggerEmote.call(currentContext);
 		
-		try{
-			if(event.which == 66)
-				this.triggerEmote.call(this);
+		currentContext.override.tempWorking = false;
+	}
+	
+	window.Pings.PingTrigger = function(down) {
+		currentContext.override.tempWorking = true;
+		
+		down ? 
+		currentContext.override.pingTriggered = true : 
+		currentContext.triggerPing.call(currentContext);
+		
+		currentContext.override.tempWorking = false;
+	}
+	
+	// EVENTS
+	// document.addEventListener('keydown', (event) => {
+		// if(this.override.pingTriggered || this.override.emoteTriggered)
+			// return;
+		
+		// this.override.tempWorking = true;
+		
+		// try{
+			// if(event.which == 66)
+				// this.override.emoteTriggered = true;
 			
-			
-			if(event.which == 67)
-				this.triggerPing.call(this);
-		}
-		catch {}
+			// if(event.which == 67)
+				// this.override.pingTriggered = true;
+		// }
+		// catch {}
 
-		this.override.tempWorking = false;
-	});
+		// this.override.tempWorking = false;
+	// });
+	
+	// document.addEventListener('keyup', (event) => {
+		// if(!this.override.pingTriggered && !this.override.emoteTriggered)
+			// return;
+		
+		// this.override.tempWorking = true;
+		
+		// try{
+			// if(event.which == 66)
+				// this.triggerEmote.call(this);
+			
+			
+			// if(event.which == 67)
+				// this.triggerPing.call(this);
+		// }
+		// catch {}
+
+		// this.override.tempWorking = false;
+	// });
 	
 	document.addEventListener('mousemove', (event) => {
 		if(this.override.pingTriggered || this.override.emoteTriggered)

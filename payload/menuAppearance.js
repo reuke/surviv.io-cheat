@@ -55,7 +55,7 @@
 				},
 				binds: {
 					autoAim: {code: -3, shift: false, ctrl: false, alt: false},
-					switchMainWeapon: {code: 81, shift: false, ctrl: false, alt: false},
+					switchMainWeapon: {code: 0, shift: false, ctrl: false, alt: false},
 					zoomIn: {code: -5, shift: false, ctrl: false, alt: false},
 					zoomOut: {code: -4, shift: false, ctrl: false, alt: false},
 					displayNames: {code: 16, shift: false, ctrl: false, alt: false},
@@ -73,8 +73,8 @@
 					toggleMap: {code: 77, shift: false, ctrl: false, alt: false},
 					toggleMiniMap: {code: 86, shift: false, ctrl: false, alt: false},
 					equipLast: {code: 81, shift: false, ctrl: false, alt: false},
-					equipNext: {code: 0, shift: false, ctrl: false, alt: false},
-					equipPrev: {code: 0, shift: false, ctrl: false, alt: false},
+					equipNext: {code: 219, shift: false, ctrl: false, alt: false},
+					equipPrev: {code: 221, shift: false, ctrl: false, alt: false},
 					equipWeapon1: {code: 49, shift: false, ctrl: false, alt: false},
 					equipWeapon2: {code: 50, shift: false, ctrl: false, alt: false},
 					equipWeapon3: {code: 51, shift: false, ctrl: false, alt: false},
@@ -97,6 +97,7 @@
 			}
 			
 			var storedString = localStorage.getItem('cheat2Setting');
+			storedString.binds = {};
 			
 			if(!storedString || storedString == "undefined")
 				return;

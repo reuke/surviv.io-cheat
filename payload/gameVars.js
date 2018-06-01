@@ -64,6 +64,9 @@ window.gameVars.Input = {
 			x: 0.0,
 			y: 0.0,
 		},
+		// LeftMouseButton: false,
+		// MiddleMouseButton: false,
+		// RightMouseButton: false,
 	},
 	// Wheel: {
 		// HookActive: true,
