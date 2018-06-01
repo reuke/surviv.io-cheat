@@ -39,6 +39,20 @@ window.gameVars.Perfomance = {
 }
 
 window.gameVars.Input = {
+	Cheat: {
+		AutoAimPressed: false,
+		StreamerMode: false,
+		FirePressed: false,
+		ShowNamesPressed: false,
+		RepeatFire: false,
+		RepeatInteraction: false,
+		ZoomDelta: 0,
+		GetZoomDelta: function(){
+			var delta = window.gameVars.Input.Cheat.ZoomDelta;
+			window.gameVars.Input.Cheat.ZoomDelta = 0;
+			return delta;
+		},
+	},
 	GlobalHookCallback: null,
 	Mouse: {
 		Pos: {
@@ -50,20 +64,11 @@ window.gameVars.Input = {
 			x: 0.0,
 			y: 0.0,
 		},
-		RepeatFire: false,
-		RightMouseButton: false,
 	},
-	Wheel: {
-		HookActive: true,
-		Delta: 0,
-		GetDelta: function(){
-			var delta = window.gameVars.Input.Wheel.Delta;
-			window.gameVars.Input.Wheel.Delta = 0;
-			return delta;
-		},
-	},
+	// Wheel: {
+		// HookActive: true,
+	// },
 	Keyboard: {
-		RepeatInteraction: false,
 		ShiftPressed: false,
 		CtrlPressed: false,
 		AltPressed: false,
@@ -71,37 +76,37 @@ window.gameVars.Input = {
 	},
 };
 
-document.addEventListener('mousedown', function(e) {
-	if(e.button == 2)
-		window.gameVars.Input.Mouse.RightMouseButton = true;
-	if(window.gameVars && window.gameVars.Menu)
-		e.stopPropagation();
-});
+// document.addEventListener('mousedown', function(e) {
+	// if(e.button == 2)
+		// window.gameVars.Input.Mouse.RightMouseButton = true;
+	// if(window.gameVars && window.gameVars.Menu)
+		// e.stopPropagation();
+// });
 
-window.addEventListener('mouseup', function(e) {
-	if(e.button == 2)
-		window.gameVars.Input.Mouse.RightMouseButton = false;
-	if(window.gameVars && window.gameVars.Menu)
-		e.stopPropagation();
-});
+// window.addEventListener('mouseup', function(e) {
+	// if(e.button == 2)
+		// window.gameVars.Input.Mouse.RightMouseButton = false;
+	// if(window.gameVars && window.gameVars.Menu)
+		// e.stopPropagation();
+// });
 
-window.addEventListener('keydown', function(e) {
-	if(e.keyCode === 16 || e.charCode === 16)
-		window.gameVars.Input.Keyboard.ShiftPressed = true;
-	if(e.keyCode === 17 || e.charCode === 17)
-		window.gameVars.Input.Keyboard.CtrlPressed = true;
-	if(e.keyCode === 18 || e.charCode === 18)
-		window.gameVars.Input.Keyboard.AltPressed = true;
-});
+// window.addEventListener('keydown', function(e) {
+	// if(e.keyCode === 16 || e.charCode === 16)
+		// window.gameVars.Input.Keyboard.ShiftPressed = true;
+	// if(e.keyCode === 17 || e.charCode === 17)
+		// window.gameVars.Input.Keyboard.CtrlPressed = true;
+	// if(e.keyCode === 18 || e.charCode === 18)
+		// window.gameVars.Input.Keyboard.AltPressed = true;
+// });
 
-window.addEventListener('keyup', function(e) {
-	if(e.keyCode === 16 || e.charCode === 16)
-		window.gameVars.Input.Keyboard.ShiftPressed = false;
-	if(e.keyCode === 17 || e.charCode === 17)
-		window.gameVars.Input.Keyboard.CtrlPressed = false;
-	if(e.keyCode === 18 || e.charCode === 18)
-		window.gameVars.Input.Keyboard.AltPressed = false;
-});
+// window.addEventListener('keyup', function(e) {
+	// if(e.keyCode === 16 || e.charCode === 16)
+		// window.gameVars.Input.Keyboard.ShiftPressed = false;
+	// if(e.keyCode === 17 || e.charCode === 17)
+		// window.gameVars.Input.Keyboard.CtrlPressed = false;
+	// if(e.keyCode === 18 || e.charCode === 18)
+		// window.gameVars.Input.Keyboard.AltPressed = false;
+// });
 
 window.gameVars.Textures = {};
 

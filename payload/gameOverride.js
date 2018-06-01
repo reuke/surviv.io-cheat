@@ -37,63 +37,62 @@ window.gameFunctions.gameOverride = function(){
 		var opt = window.menu.UserSetting.binds;
 		
 		if(checkBind(opt.autoAim, bind)) {
-			
+			window.gameVars.Input.Cheat.AutoAimPressed = down;
 		}else if(checkBind(opt.switchMainWeapon, bind)) {
 
 		}else if(checkBind(opt.zoomIn, bind)) {
-
+			window.gameVars.Input.Cheat.ZoomDelta += 1;
 		}else if(checkBind(opt.zoomOut, bind)) {
-
+			window.gameVars.Input.Cheat.ZoomDelta -= 1;
 		}else if(checkBind(opt.displayNames, bind)) {
-
+			window.gameVars.Input.Cheat.AutoAimPressed = down;
 		}else if(checkBind(opt.streamerMode, bind)) {
-
+			// window.gameVars.Input.Cheat.
 		}else if(checkBind(opt.goUp, bind)) {
-
+			keyboardEvent(87, down);
 		}else if(checkBind(opt.goLeft, bind)) {
-
+			keyboardEvent(65, down);
 		}else if(checkBind(opt.goDown, bind)) {
-
+			keyboardEvent(83, down);
 		}else if(checkBind(opt.goRight, bind)) {
-
+			keyboardEvent(68, down);
 		}else if(checkBind(opt.shoot, bind)) {
-
 		}else if(checkBind(opt.reload, bind)) {
-
+			
 		}else if(checkBind(opt.interact, bind)) {
-
+			
 		}else if(checkBind(opt.cancelAction, bind)) {
-
+			
 		}else if(checkBind(opt.teamPing, bind)) {
-
+			
 		}else if(checkBind(opt.emotes, bind)) {
-
+			
 		}else if(checkBind(opt.toggleMap, bind)) {
-
+			
 		}else if(checkBind(opt.toggleMiniMap, bind)) {
-
+			
 		}else if(checkBind(opt.equipLast, bind)) {
-
+			
 		}else if(checkBind(opt.equipNext, bind)) {
-
+			
 		}else if(checkBind(opt.equipPrev, bind)) {
-
+			
 		}else if(checkBind(opt.equipWeapon1, bind)) {
-
+			
 		}else if(checkBind(opt.equipWeapon2, bind)) {
-
+			
 		}else if(checkBind(opt.equipWeapon3, bind)) {
-
+			
 		}else if(checkBind(opt.equipWeapon4, bind)) {
-
+			
 		}else if(checkBind(opt.useMedical7, bind)) {
-
+			
 		}else if(checkBind(opt.useMedical8, bind)) {
-
+			
 		}else if(checkBind(opt.useMedical9, bind)) {
-
+			
 		}else if(checkBind(opt.useMedical0, bind)) {
-
+			
 		}
 	}
 	
@@ -109,8 +108,7 @@ window.gameFunctions.gameOverride = function(){
 	}
 	
 	var mouseButtonEvent = function(buttonCode, down){
-		
-		down ? onMouseDownBase.call(inpt, {keyCode: code}) : onMouseUpBase.call(inpt, {keyCode: code});
+		down ? onMouseDownBase.call(inpt, {button: buttonCode}) : onMouseUpBase.call(inpt, {button: buttonCode});
 	}
 	
 	// keyboard

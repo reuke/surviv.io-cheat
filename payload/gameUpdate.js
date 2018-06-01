@@ -406,7 +406,7 @@ window.gameFunctions.gameUpdate = function(){
 
 	var currentZoom = window.gameVars.ZoomLevel;
 	
-	currentZoom *= 1.0 + window.menu.UserSetting.look.zoomSpeed / 50 * window.gameVars.Input.Wheel.GetDelta();
+	currentZoom *= 1.0 + window.menu.UserSetting.look.zoomSpeed / 50 * window.gameVars.Input.Cheat.GetZoomDelta();
 	currentZoom = currentZoom < 0.1 ? 0.1 : currentZoom > 1.0 ? 1.0 : currentZoom;
 	
 	if(!window.gameVars.Menu && window.menu.UserSetting.look.zoomEnabled)
