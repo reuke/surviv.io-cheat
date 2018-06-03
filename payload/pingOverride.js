@@ -76,42 +76,6 @@ window.gameFunctions.pingOverride = function(){
 	}
 	
 	// EVENTS
-	// document.addEventListener('keydown', (event) => {
-		// if(this.override.pingTriggered || this.override.emoteTriggered)
-			// return;
-		
-		// this.override.tempWorking = true;
-		
-		// try{
-			// if(event.which == 66)
-				// this.override.emoteTriggered = true;
-			
-			// if(event.which == 67)
-				// this.override.pingTriggered = true;
-		// }
-		// catch {}
-
-		// this.override.tempWorking = false;
-	// });
-	
-	// document.addEventListener('keyup', (event) => {
-		// if(!this.override.pingTriggered && !this.override.emoteTriggered)
-			// return;
-		
-		// this.override.tempWorking = true;
-		
-		// try{
-			// if(event.which == 66)
-				// this.triggerEmote.call(this);
-			
-			
-			// if(event.which == 67)
-				// this.triggerPing.call(this);
-		// }
-		// catch {}
-
-		// this.override.tempWorking = false;
-	// });
 	
 	document.addEventListener('mousemove', (event) => {
 		if(this.override.pingTriggered || this.override.emoteTriggered)

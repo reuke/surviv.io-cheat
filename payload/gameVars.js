@@ -63,14 +63,11 @@ window.gameVars.Input = {
 		AimPos: {
 			x: 0.0,
 			y: 0.0,
-		},
-		// LeftMouseButton: false,
-		// MiddleMouseButton: false,
-		// RightMouseButton: false,
+			},
+			// LeftMouseButton: false,
+			// MiddleMouseButton: false,
+			// RightMouseButton: false,
 	},
-	// Wheel: {
-		// HookActive: true,
-	// },
 	Keyboard: {
 		ShiftPressed: false,
 		CtrlPressed: false,
@@ -78,38 +75,6 @@ window.gameVars.Input = {
 		AnythingElsePressed: 0,
 	},
 };
-
-// document.addEventListener('mousedown', function(e) {
-	// if(e.button == 2)
-		// window.gameVars.Input.Mouse.RightMouseButton = true;
-	// if(window.gameVars && window.gameVars.Menu)
-		// e.stopPropagation();
-// });
-
-// window.addEventListener('mouseup', function(e) {
-	// if(e.button == 2)
-		// window.gameVars.Input.Mouse.RightMouseButton = false;
-	// if(window.gameVars && window.gameVars.Menu)
-		// e.stopPropagation();
-// });
-
-// window.addEventListener('keydown', function(e) {
-	// if(e.keyCode === 16 || e.charCode === 16)
-		// window.gameVars.Input.Keyboard.ShiftPressed = true;
-	// if(e.keyCode === 17 || e.charCode === 17)
-		// window.gameVars.Input.Keyboard.CtrlPressed = true;
-	// if(e.keyCode === 18 || e.charCode === 18)
-		// window.gameVars.Input.Keyboard.AltPressed = true;
-// });
-
-// window.addEventListener('keyup', function(e) {
-	// if(e.keyCode === 16 || e.charCode === 16)
-		// window.gameVars.Input.Keyboard.ShiftPressed = false;
-	// if(e.keyCode === 17 || e.charCode === 17)
-		// window.gameVars.Input.Keyboard.CtrlPressed = false;
-	// if(e.keyCode === 18 || e.charCode === 18)
-		// window.gameVars.Input.Keyboard.AltPressed = false;
-// });
 
 window.gameVars.Textures = {};
 

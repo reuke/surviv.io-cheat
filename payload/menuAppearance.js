@@ -55,11 +55,11 @@
 				},
 				binds: {
 					autoAim: {code: -3, shift: false, ctrl: false, alt: false},
-					switchMainWeapon: {code: 0, shift: false, ctrl: false, alt: false},
+					// switchMainWeapon: {code: 0, shift: false, ctrl: false, alt: false},
 					zoomIn: {code: -5, shift: false, ctrl: false, alt: false},
 					zoomOut: {code: -4, shift: false, ctrl: false, alt: false},
 					displayNames: {code: 16, shift: false, ctrl: false, alt: false},
-					streamerMode: {code: 80, shift: false, ctrl: false, alt: false},
+					// streamerMode: {code: 80, shift: false, ctrl: false, alt: false},
 					goUp: {code: 87, shift: false, ctrl: false, alt: false},
 					goLeft: {code: 65, shift: false, ctrl: false, alt: false},
 					goDown: {code: 83, shift: false, ctrl: false, alt: false},
@@ -239,11 +239,11 @@
 			state = window.menu.UserSetting.binds;
 			
 			btnSetBind("autoAim",							state.autoAim);
-			btnSetBind("switchMainWeapon",					state.switchMainWeapon);
+			// btnSetBind("switchMainWeapon",					state.switchMainWeapon);
 			btnSetBind("zoomIn",							state.zoomIn);
 			btnSetBind("zoomOut",							state.zoomOut);
 			btnSetBind("displayNames",						state.displayNames);
-			btnSetBind("streamerMode",						state.streamerMode);
+			// btnSetBind("streamerMode",						state.streamerMode);
 			btnSetBind("goUp",								state.goUp);
 			btnSetBind("goLeft",							state.goLeft);
 			btnSetBind("goDown",							state.goDown);
@@ -288,7 +288,7 @@
 			updateTabCategory("shoot");
 			updateTabCategory("loot");
 			updateTabCategory("look");
-			updateTabCategory("bind");
+			updateTabCategory("binds");
 		}
 		
 		var setEvents = function(tabName){
@@ -314,10 +314,12 @@
 				
 				btnElement.click(() => {
 					btnElement.addClass("disabled");
+					if(window.gameVars.Input.GlobalHookCallback)
+						window.gameVars.Input.GlobalHookCallback.call(this, null);
 					window.gameVars.Input.GlobalHookCallback = function(bind) {
 						window.gameVars.Input.GlobalHookCallback = null;
-						window.menu.UserSetting[tabb][name] = bind;
 						btnElement.removeClass("disabled");
+						if(bind) window.menu.UserSetting[tabb][name] = bind;
 						saveSetting();
 						updateMenu();
 					}
@@ -349,10 +351,10 @@
 				}
 				
 				for (var name in window.menu.UserSetting[tab]) {
-					if(endsWith(name, "Enabled"))
-						btnSetEvent(name, tab);
-					else if(name.indexOf("bind") != -1)
+					if(tab == "binds")
 						btnBindSetEvent(name, tab);
+					else if(endsWith(name, "Enabled"))
+						btnSetEvent(name, tab);
 					else
 						sliderSetEvent(name, tab);
 				}
@@ -361,7 +363,7 @@
 			tabSetEvent("shoot");
 			tabSetEvent("loot");
 			tabSetEvent("look");
-			tabSetEvent("bind");
+			tabSetEvent("binds");
 		}
 		
 		var menuTimer = function(){
@@ -387,15 +389,6 @@
 			cheatMenu.css("display", menuActive ? "block" : "none");
 			cheatMenu.css("grid-row", "1");
 		}
-		
-		// $(document).ready(() => {
-			// defaultSetting();
-			// // loadSetting();
-			// updateMenu();
-			// changeTab("shoot");
-			// setEvents();
-			// menuTimer();
-		// });
 		
 		defaultSetting();
 		loadSetting();

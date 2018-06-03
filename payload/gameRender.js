@@ -175,9 +175,6 @@ window.gameFunctions.gameRender = function(){
 		
 		var nameText = player.nameText;
 		
-		if(nameText.visible)
-			return;
-		
 		if(window.gameVars.Input.Cheat.ShowNamesPressed)
 		{
 			nameText.tint = 0x68B0E8;

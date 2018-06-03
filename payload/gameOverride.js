@@ -34,18 +34,16 @@ window.gameFunctions.gameOverride = function(){
 		
 		if(window.gameVars.Input.GlobalHookCallback) {
 			if(bind.code == 27)  {
-				window.gameVars.Input.GlobalHookCallback = null;
-				return;
-			}
-			
-			if((bind.code == 16 || bind.code == 17 || bind.code == 18) &&
-				window.gameVars.Input.Keyboard.AnythingElsePressed == 0 &&
-				!down){
-					window.gameVars.Input.GlobalHookCallback.call(this, bind);
-					return;
-				}
-			
-			if(down){
+				window.gameVars.Input.GlobalHookCallback.call(this, {code: 0, shift: false, ctrl: false, alt: false});
+			} else if(((bind.code == 16) || (bind.code == 17) || (bind.code == 18)) &&
+				(window.gameVars.Input.Keyboard.AnythingElsePressed == 0)) {
+				if(down)
+					return
+				if(bind.code == 16) bind.shift = false;
+				if(bind.code == 17) bind.ctrl = false;
+				if(bind.code == 18) bind.alt = false;
+				window.gameVars.Input.GlobalHookCallback.call(this, bind);
+			} else if(down){
 				window.gameVars.Input.GlobalHookCallback.call(this, bind);
 			}
 			
@@ -178,6 +176,9 @@ window.gameFunctions.gameOverride = function(){
 	
 	window.addEventListener("focus", function(event) 
 	{
+		window.gameVars.Input.Keyboard.ShiftPressed = false;
+		window.gameVars.Input.Keyboard.CtrlPressed = false;
+		window.gameVars.Input.Keyboard.AltPressed = false;
 		window.gameVars.Input.Keyboard.AnythingElsePressed = 0;
 	}, false);
 	
@@ -217,6 +218,7 @@ window.gameFunctions.gameOverride = function(){
 			ctrl: window.gameVars.Input.Keyboard.CtrlPressed,
 			alt: window.gameVars.Input.Keyboard.AltPressed
 		}, true);
+		e.stopPropagation();
 	};
 	
 	// var onMouseMoveBase = this.input.onMouseMove;
