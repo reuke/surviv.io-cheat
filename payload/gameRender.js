@@ -270,9 +270,11 @@ window.gameFunctions.gameRender = function(){
 	perf.lastFPS = FPS;
 		
 	var FPSCol = getColor(green, red, getWeight(FPS, 5, 40));
+	if(window.gameVars && window.gameVars.Perfomance && window.gameVars.Perfomance.lastTimeFPS)
+		window.gameVars.Perfomance.lastTimeFPS = window.performance.now();
 	
-	window.gameVars.Perfomance.lastTimeFPS = window.performance.now();
-	
-	window.gameVars.UI.FPSText.text("FPS: " + Math.round(FPS));
-	window.gameVars.UI.FPSText.css('color', colorToString(FPSCol));
+	if(window.gameVars && window.gameVars.UI && window.gameVars.UI.FPSText) {
+		window.gameVars.UI.FPSText.text("FPS: " + Math.round(FPS));
+		window.gameVars.UI.FPSText.css('color', colorToString(FPSCol));
+	}
 }
