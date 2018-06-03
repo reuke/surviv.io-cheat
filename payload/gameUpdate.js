@@ -76,8 +76,10 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 		
 	var LATCol = getColor(red, green, getWeight(LAT, 10, 200));
 	
-	window.gameVars.UI.LATText.text("LAT: " + Math.round(LAT));
-	window.gameVars.UI.LATText.css('color', colorToString(LATCol));
+	if(window.gameVars && window.gameVars.UI && window.gameVars.UI.LATText) {
+		window.gameVars.UI.LATText.text("LAT: " + Math.round(LAT));
+		window.gameVars.UI.LATText.css('color', colorToString(LATCol));
+	}
 
 	// update LAG counter
 	
@@ -113,7 +115,8 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	
 	perf.lastLAG = newLAG;
 	
-	window.gameVars.UI.LAGText.fadeTo(0, newLAG);
+	if(window.gameVars && window.gameVars.UI && window.gameVars.UI.LAGText)
+		window.gameVars.UI.LAGText.fadeTo(0, newLAG);
 }
 	
 window.gameFunctions.gameUpdate = function(){

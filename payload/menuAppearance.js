@@ -399,6 +399,7 @@
 		
 		// Other UI stuff is here for now
 		$("#ui-top-left").append(window.tempVars.counterHtml);
+		
 		window.gameVars.UI.FPSText = $("#fps_text");
 		window.gameVars.UI.LATText = $("#lat_text");
 		window.gameVars.UI.LAGText = $("#lag_text");
