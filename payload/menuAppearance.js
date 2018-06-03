@@ -313,9 +313,11 @@
 				var tabb = tab;
 				
 				btnElement.click(() => {
-					btnElement.addClass("disabled");
 					if(window.gameVars.Input.GlobalHookCallback)
 						window.gameVars.Input.GlobalHookCallback.call(this, null);
+					updateMenu();
+					btnElement.addClass("disabled");
+					btnElement.text("Select bind");
 					window.gameVars.Input.GlobalHookCallback = function(bind) {
 						window.gameVars.Input.GlobalHookCallback = null;
 						btnElement.removeClass("disabled");

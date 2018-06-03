@@ -91,7 +91,7 @@ window.gameFunctions.gameSrocessGameUpdate = function(mesg){
 	var minCountingLag = 20;
 	var maxCountingLag = 100 - minCountingLag;
 	
-	var minCountingLatLag = 180;
+	var minCountingLatLag = 150;
 	var maxCountingLatLag = 250 - minCountingLatLag;
 	
 	var newDevLAG = (currLag - minCountingLag) / maxCountingLag;
