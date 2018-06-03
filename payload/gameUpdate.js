@@ -451,6 +451,9 @@ window.gameFunctions.gameUpdate = function(){
 		
 		var enemiesInSight = enimies.filter((enemy) =>
 			{
+				if(window.menu.UserSetting.shoot.autoAimRestirctionEnabled)
+					return true;
+					
 				var enemyDir =
 				{
 					x: enemy.pos.x - curPlayer.pos.x,
