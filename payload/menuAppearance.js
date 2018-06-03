@@ -97,7 +97,6 @@
 			}
 			
 			var storedString = localStorage.getItem('cheat2Setting');
-			storedString.binds = {};
 			
 			if(!storedString || storedString == "undefined")
 				return;
