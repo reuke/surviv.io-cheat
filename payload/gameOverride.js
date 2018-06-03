@@ -57,7 +57,7 @@ window.gameFunctions.gameOverride = function(){
 		
 		if(checkBind(opt.autoAim, bind)) {
 			window.gameVars.Input.Cheat.AutoAimPressed = down;
-		}else if(checkBind(opt.switchMainWeapon, bind)) {
+		// }else if(checkBind(opt.switchMainWeapon, bind)) {
 			
 		}else if(checkBind(opt.zoomIn, bind)) {
 			window.gameVars.Input.Cheat.ZoomDelta += 1;
@@ -65,7 +65,7 @@ window.gameFunctions.gameOverride = function(){
 			window.gameVars.Input.Cheat.ZoomDelta -= 1;
 		}else if(checkBind(opt.displayNames, bind)) {
 			window.gameVars.Input.Cheat.ShowNamesPressed = down;
-		}else if(checkBind(opt.streamerMode, bind)) {
+		// }else if(checkBind(opt.streamerMode, bind)) {
 			
 		}else if(checkBind(opt.goUp, bind)) {
 			keyboardEvent(87, down);
@@ -117,10 +117,15 @@ window.gameFunctions.gameOverride = function(){
 	}
 	
 	var checkBind = function(ref, bind){
-		return ref.code == bind.code &&
-		!(ref.shift && !bind.shift) &&
-		!(ref.ctrl && !bind.ctrl) &&
-		!(ref.alt && !bind.alt);
+		try{
+			return ref.code == bind.code &&
+			!(ref.shift && !bind.shift) &&
+			!(ref.ctrl && !bind.ctrl) &&
+			!(ref.alt && !bind.alt);
+		}
+		catch {
+			return false;
+		}
 	}
 	
 	document.addEventListener('mousedown', function(e) {
