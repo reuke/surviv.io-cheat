@@ -46,6 +46,7 @@
 			.appendTo("head");
 	});
 	
+	$(document).off("mousedown");
 	
 	var updateLang = function() {
 		setTimeout(updateLang, 50);

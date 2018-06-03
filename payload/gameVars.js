@@ -75,7 +75,7 @@ window.gameVars.Input = {
 		ShiftPressed: false,
 		CtrlPressed: false,
 		AltPressed: false,
-		AnythingElsePressed: false,
+		AnythingElsePressed: 0,
 	},
 };
 

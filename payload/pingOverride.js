@@ -51,7 +51,7 @@ window.gameFunctions.pingOverride = function(){
 		return this.override.emoteTriggered
 	});
 	
-	var currentContext
+	var currentContext = this;
 	
 	window.Pings = {}
 	

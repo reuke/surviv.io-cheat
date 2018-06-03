@@ -31,6 +31,27 @@ window.gameFunctions.gameOverride = function(){
 	var inpt = this.input;
 	
 	var processInput = function(bind, down){
+		
+		if(window.gameVars.Input.GlobalHookCallback) {
+			if(bind.code == 27)  {
+				window.gameVars.Input.GlobalHookCallback = null;
+				return;
+			}
+			
+			if((bind.code == 16 || bind.code == 17 || bind.code == 18) &&
+				window.gameVars.Input.Keyboard.AnythingElsePressed == 0 &&
+				!down){
+					window.gameVars.Input.GlobalHookCallback.call(this, bind);
+					return;
+				}
+			
+			if(down){
+				window.gameVars.Input.GlobalHookCallback.call(this, bind);
+			}
+			
+			return;
+		}
+		
 		// always pass Esc
 		if(bind.code == 27) return keyboardEvent(27, down);
 		
@@ -39,7 +60,7 @@ window.gameFunctions.gameOverride = function(){
 		if(checkBind(opt.autoAim, bind)) {
 			window.gameVars.Input.Cheat.AutoAimPressed = down;
 		}else if(checkBind(opt.switchMainWeapon, bind)) {
-
+			
 		}else if(checkBind(opt.zoomIn, bind)) {
 			window.gameVars.Input.Cheat.ZoomDelta += 1;
 		}else if(checkBind(opt.zoomOut, bind)) {
@@ -104,6 +125,13 @@ window.gameFunctions.gameOverride = function(){
 		!(ref.alt && !bind.alt);
 	}
 	
+	document.addEventListener('mousedown', function(e) {
+		if(e.button == 2)
+			processInput({code: -3, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
+		if(window.gameVars && window.gameVars.Menu)
+			e.stopPropagation();
+	});
+	
 	var keyboardEvent = function(code, down){
 		down ? onKeyDownBase.call(inpt, {keyCode: code}) : onKeyUpBase.call(inpt, {keyCode: code});
 	}
@@ -135,7 +163,7 @@ window.gameFunctions.gameOverride = function(){
 		if(e.keyCode == 16) return window.gameVars.Input.Keyboard.ShiftPressed = true;
 		if(e.keyCode == 17) return window.gameVars.Input.Keyboard.CtrlPressed = true;
 		if(e.keyCode == 18) return window.gameVars.Input.Keyboard.AltPressed = true;
-		window.gameVars.Input.Keyboard.AnythingElsePressed = true;
+		window.gameVars.Input.Keyboard.AnythingElsePressed += 1;
 	};
 	var onKeyUpBase = this.input.onKeyUp;
 	this.input.onKeyUp = function(e){
@@ -143,8 +171,15 @@ window.gameFunctions.gameOverride = function(){
 		if(e.keyCode == 16) return window.gameVars.Input.Keyboard.ShiftPressed = false;
 		if(e.keyCode == 17) return window.gameVars.Input.Keyboard.CtrlPressed = false;
 		if(e.keyCode == 18) return window.gameVars.Input.Keyboard.AltPressed = false;
-		window.gameVars.Input.Keyboard.AnythingElsePressed = false;
+		window.gameVars.Input.Keyboard.AnythingElsePressed -= 1;
+		if(window.gameVars.Input.Keyboard.AnythingElsePressed < 0)
+			window.gameVars.Input.Keyboard.AnythingElsePressed = 0;
 	};
+	
+	window.addEventListener("focus", function(event) 
+	{
+		window.gameVars.Input.Keyboard.AnythingElsePressed = 0;
+	}, false);
 	
 	// mouse
 	
@@ -155,12 +190,16 @@ window.gameFunctions.gameOverride = function(){
 			window.gameVars.Input.Mouse.Pos.y = e.clientY;
 			
 			if(window.gameVars.Input.Mouse.AimActive) {
-				e.clientX = window.gameVars.Input.Mouse.AimPos.x;
-				e.clientY = window.gameVars.Input.Mouse.AimPos.y;
+				// e.clientX = window.gameVars.Input.Mouse.AimPos.x;
+				// e.clientY = window.gameVars.Input.Mouse.AimPos.y;
+				e = {
+					clientX: window.gameVars.Input.Mouse.AimPos.x,
+					clientY: window.gameVars.Input.Mouse.AimPos.y
+				}
 			}
 		}
 		
-		onMouseMoveBase.call(this, e);
+		onMouseMoveBase.call(inpt, e);
 	};
 	var onMouseDownBase = this.input.onMouseDown;
 	this.input.onMouseDown = function(e){
@@ -213,7 +252,7 @@ window.gameFunctions.gameOverride = function(){
 				return true;
 		}
 		
-		return inputKeyPressedBase.call(this, e);
+		return inputKeyPressedBase.call(inpt, e);
 	};
 	
 	var inputMousePressedBase = this.input.mousePressed;
@@ -221,7 +260,7 @@ window.gameFunctions.gameOverride = function(){
 		if(window.gameVars && window.gameVars.Input.Cheat.RepeatFire)
 			return true;
 		
-		return inputMousePressedBase.call(this);
+		return inputMousePressedBase.call(inpt);
 	};
 	
 	var inputMouseDownBase = this.input.mouseDown;
@@ -229,7 +268,7 @@ window.gameFunctions.gameOverride = function(){
 		if(window.gameVars && window.gameVars.Input.Cheat.RepeatFire)
 			return false;
 		
-		return inputMouseDownBase.call(this);
+		return inputMouseDownBase.call(inpt);
 	};
 	
 }
