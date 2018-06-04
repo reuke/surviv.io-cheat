@@ -79,8 +79,20 @@ window.gameVars.Input = {
 window.gameVars.Textures = {};
 
 window.gameVars.Input.Keys = {};
-window.gameVars.Input.Keys.CodeOf = (name) => window.gameVars.Input.Keys.Codes.find(c => c.name == name).id;
-window.gameVars.Input.Keys.NameOf = (code) => window.gameVars.Input.Keys.Codes.find(c => c.id == code).name;
+window.gameVars.Input.Keys.CodeOf = function(name){
+	var search = window.gameVars.Input.Keys.Codes.find(c => c.name == name);
+	if(search)
+		return search.id;
+	
+	return 0;
+}
+window.gameVars.Input.Keys.CodeOf = function(code){
+	var search = window.gameVars.Input.Keys.Codes.find(c => c.id == code);
+	if(search)
+		return search.name;
+	
+	return "None";
+}
 window.gameVars.Input.Keys.Codes = [{
     "id": 0,
     "name": "None"
