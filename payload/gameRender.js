@@ -263,7 +263,7 @@ window.gameFunctions.gameRender = function(){
 	
 	var FPS = getMedian(FPSList);
 	
-	if(perf.lastFPS) {
+	if(perf.lastFPS != null) {
 		FPS = FPS * (1 - FPSinertia) + perf.lastFPS * FPSinertia;
 	}
 
