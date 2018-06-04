@@ -129,8 +129,8 @@ window.gameFunctions.gameOverride = function(){
 	}
 	
 	document.addEventListener('mousedown', function(e) {
-		if(e.button == 2)
-			processInput({code: -3, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
+		if((e.button == 2) || (window.gameVars.Input.GlobalHookCallback && (e.button == 0)))
+			processInput({code: e.button * -1 - 1, shift: e.shiftKey, ctrl: e.ctrlKey, alt: e.altKey}, true);
 		if(window.gameVars && window.gameVars.Menu)
 			e.stopPropagation();
 	});
