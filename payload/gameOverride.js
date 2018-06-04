@@ -145,7 +145,7 @@ window.gameFunctions.gameOverride = function(){
 	}
 	
 	var mouseWheelEvent = function(delta){
-		inputOnMouseWheelBase.call(inpt, {deltaY: delta});
+		onMouseWheelBase.call(inpt, {deltaY: delta});
 	}
 	
 	var triggerEmote = function(down) {
@@ -217,39 +217,16 @@ window.gameFunctions.gameOverride = function(){
 	};
 	var onMouseWheelBase = this.input.onMouseWheel;
 	this.input.onMouseWheel = function(e){
+		e.stopPropagation();
+		if(window.gameVars && window.gameVars.Menu && !(window.gameVars.Input.GlobalHookCallback))
+			return;
 		processInput({
 			code: e.deltaY < 0 ? -4 : -5, 
 			shift: window.gameVars.Input.Keyboard.ShiftPressed,
 			ctrl: window.gameVars.Input.Keyboard.CtrlPressed,
 			alt: window.gameVars.Input.Keyboard.AltPressed
 		}, true);
-		e.stopPropagation();
 	};
-	
-	// var onMouseMoveBase = this.input.onMouseMove;
-	// this.input.onMouseMove = function(e){
-		// if(window.gameVars){
-			// window.gameVars.Input.Mouse.Pos.x = e.clientX;
-			// window.gameVars.Input.Mouse.Pos.y = e.clientY;
-			
-			// if(window.gameVars.Input.Mouse.AimActive) {
-				// e.__defineGetter__("clientX", () => window.gameVars.Input.Mouse.AimPos.x);
-				// e.__defineGetter__("clientY", () => window.gameVars.Input.Mouse.AimPos.y);
-			// }
-		// }
-		
-		// onMouseMoveBase.call(this, e);
-	// };
-	
-	// repeating actions
-	
-	// var inputOnMouseWheelBase = this.input.onMouseWheel;
-	// this.input.onMouseWheel = function(e){
-		// if(window.gameVars && window.gameVars.Input.Wheel.HookActive)
-			// window.gameVars.Input.Wheel.Delta += (e.deltaY < 0 ? -1 : 1);
-		// else
-			// inputOnMouseWheelBase.call(this, e);
-	// };
 	
 	var inputKeyPressedBase = this.input.keyPressed;
 	this.input.keyPressed = function(e){
