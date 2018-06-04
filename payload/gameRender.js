@@ -248,10 +248,12 @@ window.gameFunctions.gameRender = function(){
 	
 	var curFPS = 0;
 	
-	if(perf.lastTimeFPS != null) {
+	if(perf.lastTimeFPS) {
 		var elapsed = window.performance.now() - perf.lastTimeFPS;
 		curFPS = 1000 / elapsed;
 	}
+	
+	perf.lastTimeFPS = window.performance.now();
 	
 	var FPSList = perf.lastFPSList;
 	
@@ -263,15 +265,13 @@ window.gameFunctions.gameRender = function(){
 	
 	var FPS = getMedian(FPSList);
 	
-	if(perf.lastFPS != null) {
+	if(perf.lastFPS) {
 		FPS = FPS * (1 - FPSinertia) + perf.lastFPS * FPSinertia;
 	}
 
 	perf.lastFPS = FPS;
 		
 	var FPSCol = getColor(green, red, getWeight(FPS, 5, 40));
-	if(window.gameVars && window.gameVars.Perfomance && window.gameVars.Perfomance.lastTimeFPS)
-		window.gameVars.Perfomance.lastTimeFPS = window.performance.now();
 	
 	if(window.gameVars && window.gameVars.UI && window.gameVars.UI.FPSText) {
 		window.gameVars.UI.FPSText.text("FPS: " + Math.round(FPS));
