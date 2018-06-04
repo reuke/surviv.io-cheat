@@ -86,7 +86,7 @@ window.gameVars.Input.Keys.CodeOf = function(name){
 	
 	return 0;
 }
-window.gameVars.Input.Keys.CodeOf = function(code){
+window.gameVars.Input.Keys.NameOf = function(code){
 	var search = window.gameVars.Input.Keys.Codes.find(c => c.id == code);
 	if(search)
 		return search.name;
