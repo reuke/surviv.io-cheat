@@ -248,7 +248,7 @@ window.gameFunctions.gameRender = function(){
 	
 	var curFPS = 0;
 	
-	if(perf.lastTimeFPS) {
+	if(perf.lastTimeFPS != null) {
 		var elapsed = window.performance.now() - perf.lastTimeFPS;
 		curFPS = 1000 / elapsed;
 	}
