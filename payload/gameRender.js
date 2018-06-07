@@ -170,12 +170,17 @@ window.gameFunctions.gameRender = function(){
 	}
 	
 	var updateNames = function(player) {
-		if(!player || !player.nameText || player.teammate)
+		if(!player || !player.nameText)
 			return;
 		
 		var nameText = player.nameText;
 		
-		if(window.gameVars.Input.Cheat.ShowNamesPressed)
+		if(player.teammate == true)
+		{	
+			nameText.tint = 0XFFFFFF;
+			nameText.visible = true;
+		}
+		else if(window.gameVars.Input.Cheat.ShowNamesPressed)
 		{
 			nameText.tint = 0x68B0E8;
 			nameText.visible = true;
