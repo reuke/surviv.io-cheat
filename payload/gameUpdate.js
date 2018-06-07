@@ -145,6 +145,12 @@ window.gameFunctions.gameUpdate = function(){
 		var selfTeamId = game.playerBarn.playerInfo[game.activeId].teamId;
 		var objectIds = Object.keys(game.objectCreator.idToObj);
 		var playerIds = Object.keys(game.playerBarn.playerInfo);
+		
+		var isTeammate = function(plrId, plrObj) {
+			var isTmmt = game.playerBarn.playerInfo[plrId].teamId == selfTeamId;
+			plrObj.teammate = isTmmt;
+			return isTmmt;
+		}
 
 		return playerIds
 			.filter(function(id) {
@@ -152,7 +158,7 @@ window.gameFunctions.gameUpdate = function(){
 				return playerObject && 
 				(!playerObject.netData.dead) && 
 				(!playerObject.netData.downed) &&
-				!(game.playerBarn.playerInfo[id].teamId == selfTeamId && (playerObject.teammate = true)) &&
+				(!isTeammate(id, playerObject)) &&
 				id != selfId;})
 			.map(function(id) {
 				return game.objectCreator.idToObj[id];
