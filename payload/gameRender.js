@@ -177,17 +177,17 @@ window.gameFunctions.gameRender = function(){
 		
 		if(player.teammate == true)
 		{	
-			nameText.tint = 0XFFFFFF;
+			nameText.style.fill = "#00ffff";
 			nameText.visible = true;
 		}
 		else if(window.gameVars.Input.Cheat.ShowNamesPressed)
 		{
-			nameText.tint = 0x68B0E8;
+			nameText.style.fill = "#ff3333";
 			nameText.visible = true;
 		}
 		else
 		{	
-			nameText.tint = 0XFFFFFF;
+			nameText.style.fill = "#00ffff";
 			nameText.visible = false;
 		}
 	}
