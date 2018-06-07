@@ -156,9 +156,9 @@ window.gameFunctions.gameUpdate = function(){
 			.filter(function(id) {
 				var playerObject = game.objectCreator.idToObj[id];
 				return playerObject && 
+				(!isTeammate(id, playerObject)) &&
 				(!playerObject.netData.dead) && 
 				(!playerObject.netData.downed) &&
-				(!isTeammate(id, playerObject)) &&
 				id != selfId;})
 			.map(function(id) {
 				return game.objectCreator.idToObj[id];
