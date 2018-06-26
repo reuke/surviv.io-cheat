@@ -94,6 +94,9 @@ window.gameFunctions.gameRender = function(){
 			var settings = window.menu.UserSetting.shoot;
 			// If this is the correct player, set the visibility of the target indicator to the target-indicator-visible setting
 			targetIndicator.visible = settings.autoAimCrosshairEnabled;
+		} else {
+			// Hide the indicator if this is the wrong target
+			targetIndicator.visible = false;
 		}
 	}
 	
