@@ -25,6 +25,7 @@
 					fragGrenadeTimerEnabled: 		true,
 					bumpFireEnabled: 				true,
 					autoAimEnabled: 				true,
+					autoAimCrosshairEnabled: 		true,
 					autoAimSpeedInertia:			0.4,
 					autoAimPredictionInertia:		0.7,
 					autoAimRestirctionEnabled: 		true,
@@ -135,6 +136,7 @@
 				fragGrenadeTimerEnabled: 		btnGetState("fragGrenadeTimerEnabled"),
 				bumpFireEnabled: 				btnGetState("bumpFireEnabled"),
 				autoAimEnabled: 				btnGetState("autoAimEnabled"),
+				autoAimCrosshairEnabled:		btnGetState("autoAimCrosshairEnabled"),
 				autoAimSpeedInertia:			sliderGetValue("autoAimSpeedInertia"),
 				autoAimPredictionInertia:		sliderGetValue("autoAimPredictionInertia"),
 				autoAimRestirctionEnabled: 		btnGetState("autoAimRestirctionEnabled"),
@@ -202,6 +204,7 @@
 			btnSetState("fragGrenadeTimerEnabled",			state.fragGrenadeTimerEnabled);
 			btnSetState("bumpFireEnabled",					state.bumpFireEnabled);
 			btnSetState("autoAimEnabled",					state.autoAimEnabled);
+			btnSetState("autoAimCrosshairEnabled",			state.autoAimCrosshairEnabled);
 			sliderSetValue("autoAimSpeedInertia",			state.autoAimSpeedInertia);
 			sliderSetValue("autoAimPredictionInertia",		state.autoAimPredictionInertia);
 			btnSetState("autoAimRestirctionEnabled",		state.autoAimRestirctionEnabled);

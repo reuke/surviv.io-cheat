@@ -85,8 +85,16 @@ window.gameFunctions.gameRender = function(){
 		
 		targetIndicator.position.x = targetIndicator.width * -0.5 + player.prediction.x;
 		targetIndicator.position.y = targetIndicator.height * -0.5 + player.prediction.y;
-		
-		targetIndicator.visible = player == window.gameVars.Game.Target;
+
+
+		// Setting to hide target indicator
+
+		// Check if the player that we are putting the target indicator on is the autoaim target
+		if(player == window.gameVars.Game.Target) {
+			var settings = window.menu.UserSetting.shoot;
+			// If this is the correct player, set the visibility of the target indicator to the target-indicator-visible setting
+			targetIndicator.visible = settings.autoAimCrosshairEnabled;
+		}
 	}
 	
 	var updateLaser = function() {
