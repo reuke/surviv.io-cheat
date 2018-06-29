@@ -42,6 +42,7 @@
 					autolootDropDelay:				0.8,
 				},
 				look: {
+					countersEnabled: 				true,
 					zoomEnabled: 					true,
 					zoomSpeed:						5,
 					obstaclesAlphaEnabled: 			true,
@@ -153,6 +154,7 @@
 				autolootDropDelay:				sliderGetValue("autolootDropDelay"),
 			};
 			window.menu.UserSetting.look = {
+				countersEnabled: 				btnGetState("countersEnabled"),
 				zoomEnabled: 					btnGetState("zoomEnabled"),
 				zoomSpeed:						sliderGetValue("zoomSpeed"),
 				obstaclesAlphaEnabled: 			btnGetState("obstaclesAlphaEnabled"),
@@ -225,6 +227,7 @@
 			// look
 			state = window.menu.UserSetting.look;
 			
+			btnSetState("countersEnabled",					state.countersEnabled);
 			btnSetState("zoomEnabled",						state.zoomEnabled);
 			sliderSetValue("zoomSpeed",						state.zoomSpeed);
 			btnSetState("obstaclesAlphaEnabled",			state.obstaclesAlphaEnabled);
@@ -403,6 +406,7 @@
 		// Other UI stuff is here for now
 		$("#ui-top-left").append(window.tempVars.counterHtml);
 		
+		window.gameVars.UI.CountersWrapper = $("#fps_ping_wrapper");
 		window.gameVars.UI.FPSText = $("#fps_text");
 		window.gameVars.UI.LATText = $("#lat_text");
 		window.gameVars.UI.LAGText = $("#lag_text");

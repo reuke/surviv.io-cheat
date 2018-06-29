@@ -25,6 +25,7 @@ window.gameVars.Menu = false;
 window.gameVars.Language = "en";
 
 window.gameVars.UI = {
+	CountersWrapper: null,
 	FPSText: null,
 	LATText: null,
 	LAGText: null,

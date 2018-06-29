@@ -293,4 +293,11 @@ window.gameFunctions.gameRender = function(){
 		window.gameVars.UI.FPSText.text("FPS: " + Math.round(FPS));
 		window.gameVars.UI.FPSText.css('color', colorToString(FPSCol));
 	}
+	
+	//counters display
+	
+	if(window.gameVars && window.gameVars.UI && window.gameVars.UI.CountersWrapper) {
+		window.gameVars.UI.CountersWrapper.css("display", window.menu.UserSetting.look.countersEnabled ? "block" : "none");
+	}
+	
 }
