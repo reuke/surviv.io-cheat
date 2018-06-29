@@ -1,6 +1,6 @@
 {
 	"name": "SURVIV.IO Cheat",
-	"version": "0.14.8",
+	"version": "0.15",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
 		"*://surviv.io/*",
@@ -8,7 +8,7 @@
 		"*://2dbattleroyale.com/*"
 	],
 	"browser_action": {
-		"default_title": "SURVIV.IO Cheat dev",
+		"default_title": "SURVIV.IO Cheat",
 		"default_icon": "128.png"
 	},
 	"icons": {
