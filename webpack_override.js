@@ -2,7 +2,7 @@
 	
 	window.webpackJsonp([0], {
         "webpack_inject": function (wrapper, exports, getModule) {
-            var mainModule = getModule("4ff38b8cfc");
+            var mainModule = getModule("9b5f96");
 			
 			// init
 			var gameInitBase = mainModule.prototype.init;
@@ -49,7 +49,7 @@
 			};
 			
 			// PING
-			var emoteModule = getModule("c740b21ab8");
+			var emoteModule = getModule("e5d16b");
 			
 			// override
 			var emoteManagerUpdateBase = emoteModule.EmoteManager.prototype.update;
@@ -61,7 +61,7 @@
 			};
 			
 			// DATA
-			window.gameVars.Game.GameData = getModule("ae8f4193b2");
+			window.gameVars.Game.GameData = getModule("989ad6");
         }
     }, ["webpack_inject"]);
 
