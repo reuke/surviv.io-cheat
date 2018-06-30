@@ -2,7 +2,8 @@
 	
 	window.webpackJsonp([0], {
         "webpack_inject": function (wrapper, exports, getModule) {
-            var mainModule = getModule("32500edd");
+            var mainModule = getModule("9b5f96fd");
+	    // First mod: find consecutive EmoteSlot and EmoteData
 			
 			// init
 			var gameInitBase = mainModule.prototype.init;
@@ -49,7 +50,8 @@
 			};
 			
 			// PING
-			var emoteModule = getModule("e5d16b");
+			var emoteModule = getModule("e5d16b4d");
+			// Second mod: Find consecutive declarations of emoteSoftTicker and emoteHardTicker = 0
 			
 			// override
 			var emoteManagerUpdateBase = emoteModule.EmoteManager.prototype.update;
@@ -61,7 +63,8 @@
 			};
 			
 			// DATA
-			window.gameVars.Game.GameData = getModule("989ad6");
+			window.gameVars.Game.GameData = getModule("064c0a93");
+			// This will be the very first ID at the top.
         }
     }, ["webpack_inject"]);
 
