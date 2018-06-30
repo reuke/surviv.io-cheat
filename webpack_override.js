@@ -2,7 +2,7 @@
 	
 	window.webpackJsonp([0], {
         "webpack_inject": function (wrapper, exports, getModule) {
-            var mainModule = getModule("9b5f96");
+            var mainModule = getModule("0955a76e");
 			
 			// init
 			var gameInitBase = mainModule.prototype.init;
