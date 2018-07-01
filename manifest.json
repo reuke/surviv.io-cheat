@@ -1,6 +1,6 @@
 {
 	"name": "SURVIV.IO Cheat",
-	"version": "0.15.1",
+	"version": "0.15.2",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
 		"*://surviv.io/*",
@@ -34,7 +34,8 @@
 		"payload/FPSCounter.html",
 		"payload/glitchLogo.css",
 		"third_party/jquery-3.3.1.min.js",
-		"webpack_override.js"
+		"webpack_override.js",
+		"webpack_detect.js"
 	],
 	"content_scripts": [{
 		"matches": [

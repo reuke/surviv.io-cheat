@@ -1,4 +1,4 @@
-window.gameVars = {};
+if(!window.gameVars) window.gameVars = {};
 
 window.gameVars.Game = {
 	GameActive: false,
