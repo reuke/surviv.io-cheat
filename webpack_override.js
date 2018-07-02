@@ -1,6 +1,6 @@
 (function webpack_inject(){
 	
-	const waitMaxCount = 15;
+	const waitMaxCount = 30;
 	var waitCount = 0;
 	
 	var doWork = function() {

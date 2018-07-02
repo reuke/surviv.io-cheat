@@ -21,5 +21,7 @@
         <File name="manifest.json" />
         <File name="start.js" />
         <File name="webpack_override.js" />
+        <File name="webpack_detect.js" />
+        <File name="webpack_intercept.js" />
     </Project>
 </NotepadPlus>

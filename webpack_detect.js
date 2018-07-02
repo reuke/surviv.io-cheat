@@ -13,89 +13,79 @@
 		gameData: null,
 	}
 	
-	// webpack functions
-	window._webpackJsonp = undefined;
-	window.webpackJsonpBase = undefined;
+	var modulesIds = [];
 	
-	var override_module = function(modules, id) {
-		
-		var moduleBase = modules[id];
-		
-		modules[id] = function(exportsVal, idk, same) {
-			moduleBase(exportsVal, idk, same);
-			
-			// detect exports property
-			if(exportsVal.hasOwnProperty("exports")) {
-				
-				var exports = exportsVal.exports;
-				
-				// mainModule signature
-				if(	exports.prototype &&
-					exports.prototype.hasOwnProperty("init") &&
-					exports.prototype.hasOwnProperty("free") &&
-					exports.prototype.hasOwnProperty("update") &&
-					exports.prototype.hasOwnProperty("render") &&
-					exports.prototype.hasOwnProperty("sendMessage") &&
-					exports.prototype.hasOwnProperty("processGameUpdate")
-				) {
-					window.gameVars.OverrideIDs.mainModule = id;
-					console.log('mainModule detected:' + id);
-				}
-				
-				// emoteModule signature
-				if(	exports.hasOwnProperty("EmoteManager")) {
-					window.gameVars.OverrideIDs.emoteModule = id;
-					console.log('emoteModule detected:' + id);
-				}
-				
-				// gameData signature
-				if(	exports.hasOwnProperty("Action") &&
-					exports.hasOwnProperty("WeaponSlot") &&
-					exports.hasOwnProperty("WeaponType") &&
-					exports.hasOwnProperty("DamageType") &&
-					exports.hasOwnProperty("Anim") &&
-					exports.hasOwnProperty("GasMode")
-				) {
-					window.gameVars.OverrideIDs.gameData = id;
-					console.log('gameData detected:' + id);
-				}
-				
-			}
+	var detectModules = function() {
+		if(!window.webpackJsonp) {
+			setTimeout(detectModules, 100);
+			return;
 		}
-	}
-	
-	window.__defineGetter__("webpackJsonp", function(){
-		return _webpackJsonp;
-	});
-	
-	window.__defineSetter__("webpackJsonp", function(val){
 		
-		window.webpackJsonpBase = val;
-		
-		_webpackJsonp = function(t, modules, u) {
-			
-			// detect app.********.js webpack modules
-			if(Object.keys(modules).length > 20){
+		window.webpackJsonp([0], {
+			"webpack_detect": function (wrapper, exports, getModule) {
 				
-				// detect modules ID's
-				
-				for (var key in modules) {
+				for (var i = 0; i < modulesIds.length; i++) {
+					var id = modulesIds[i].slice(0);
 					
-					var id = key.slice(0);
-						
-					if (modules.hasOwnProperty(id)) {
-						
-						override_module(modules, id);
+					var module = getModule(id);
+					
+					// mainModule signature
+					if(	module.prototype &&
+						module.prototype.hasOwnProperty("init") &&
+						module.prototype.hasOwnProperty("free") &&
+						module.prototype.hasOwnProperty("update") &&
+						module.prototype.hasOwnProperty("render") &&
+						module.prototype.hasOwnProperty("sendMessage") &&
+						module.prototype.hasOwnProperty("processGameUpdate")
+					) {
+						window.gameVars.OverrideIDs.mainModule = id;
+						console.log('mainModule detected:' + id);
+					}
+					
+					// emoteModule signature
+					if(	module.hasOwnProperty("EmoteManager")) {
+						window.gameVars.OverrideIDs.emoteModule = id;
+						console.log('emoteModule detected:' + id);
+					}
+					
+					// gameData signature
+					if(	module.hasOwnProperty("Action") &&
+						module.hasOwnProperty("WeaponSlot") &&
+						module.hasOwnProperty("WeaponType") &&
+						module.hasOwnProperty("DamageType") &&
+						module.hasOwnProperty("Anim") &&
+						module.hasOwnProperty("GasMode")
+					) {
+						window.gameVars.OverrideIDs.gameData = id;
+						console.log('gameData detected:' + id);
 					}
 				}
-				
-				_webpackJsonp = webpackJsonpBase;
 			}
-			
-			// base method
-			webpackJsonpBase.call(this, t, modules, u);
-		};
-	});
+		}, ["webpack_detect"]);
+	}
 	
-	console.log('webpack detect deployed');
+	var extensionId = "dhjbajnikgblcpeolmhckmejcnjojpod";
+
+	var sendModRequest = function() {
+		chrome.runtime.sendMessage(extensionId, {}, parseModResponse );
+	}
+	
+	var parseModResponse = function(response) {
+		if(!response) {
+			setTimeout(sendModRequest, 100);
+			return;
+		}
+		
+		var responseObj = eval("(" + response + ')');
+		for (var key in responseObj) {
+			var id = key.slice(0);
+			if (responseObj.hasOwnProperty(id)) {
+				modulesIds.push(id);
+			}
+		}
+		console.log(modulesIds);
+		detectModules();
+	}
+	
+	sendModRequest();
 })();

@@ -3,6 +3,10 @@
 	"version": "0.15.2",
 	"description": "Cheat for surviv.io game.",
 	"permissions": [
+		"tabs",
+        "webRequest",
+        "webRequestBlocking",
+		"webNavigation",
 		"*://surviv.io/*",
 		"*://surviv2.io/*",
 		"*://2dbattleroyale.com/*"
@@ -37,6 +41,13 @@
 		"webpack_override.js",
 		"webpack_detect.js"
 	],
+	"externally_connectable": {
+		"matches": [
+			"*://surviv.io/*",
+			"*://surviv2.io/*",
+			"*://2dbattleroyale.com/*"
+		]
+	},
 	"content_scripts": [{
 		"matches": [
 			"*://surviv.io/*",
@@ -51,6 +62,10 @@
 		],
 		"run_at": "document_start"
 	}],
+	"background": {
+        "scripts": ["webpack_intercept.js"],
+        "persistent": true
+    },
 	"manifest_version": 2,
 	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 }
